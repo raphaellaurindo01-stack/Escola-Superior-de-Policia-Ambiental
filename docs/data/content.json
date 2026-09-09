@@ -1,0 +1,1358 @@
+{
+  "app": {
+    "name": "Escola Superior de Polícia Ambiental",
+    "subtitle": "Consulta rápida, procedimentos, checklists e ferramentas",
+    "version": "2.1.0"
+  },
+  "modules": [
+    {
+      "id": "flora",
+      "title": "Flora",
+      "icon": "🌳",
+      "description": "Supressão, APP, árvores isoladas, produtos florestais e intervenção em vegetação.",
+      "items": [
+        {
+          "title": "Supressão de vegetação nativa",
+          "tags": [
+            "flora",
+            "supressão",
+            "vegetação",
+            "autorização"
+          ],
+          "summary": "Roteiro inicial para fiscalização de intervenção ou supressão de vegetação nativa.",
+          "steps": [
+            "Identificar e delimitar a área afetada.",
+            "Verificar o tipo de vegetação e, quando aplicável, o estágio sucessional.",
+            "Verificar se existe APP, Unidade de Conservação ou outra área especialmente protegida.",
+            "Solicitar e conferir licença/autorização ambiental e suas condicionantes.",
+            "Registrar coordenadas, fotografias, dimensões e elementos materiais relevantes.",
+            "Verificar possível enquadramento administrativo e penal, conforme o caso."
+          ],
+          "legal": [
+            "Lei Federal 12.651/2012 (Código Florestal)",
+            "Lei Federal 9.605/1998",
+            "Decreto Federal 6.514/2008",
+            "Decreto Estadual SP 64.456/2019, com alterações posteriores"
+          ],
+          "warning": "O enquadramento deve ser confirmado conforme a situação concreta, competência do órgão ambiental e normas estaduais/municipais aplicáveis.",
+          "documents": [
+            {
+              "title": "Lei Federal 12.651/2012",
+              "url": "https://www.planalto.gov.br/ccivil_03/_ato2011-2014/2012/lei/l12651.htm",
+              "note": "",
+              "checked": "2026-09-09"
+            },
+            {
+              "title": "Lei Federal 9.605/1998",
+              "url": "https://www.planalto.gov.br/ccivil_03/leis/l9605.htm",
+              "note": "",
+              "checked": "2026-09-09"
+            },
+            {
+              "title": "Decreto Federal 6.514/2008",
+              "url": "https://www.planalto.gov.br/ccivil_03/_ato2007-2010/2008/decreto/d6514.htm",
+              "note": "",
+              "checked": "2026-09-09"
+            },
+            {
+              "title": "Decreto Estadual SP 64.456/2019",
+              "url": "https://www.al.sp.gov.br/repositorio/legislacao/decreto/2019/decreto-64456-10.09.2019.html",
+              "note": "Consultar alterações na base da ALESP.",
+              "checked": "2026-09-09"
+            }
+          ]
+        },
+        {
+          "title": "Intervenção em APP",
+          "tags": [
+            "app",
+            "área de preservação permanente",
+            "intervenção"
+          ],
+          "summary": "Checklist para verificar intervenção em Área de Preservação Permanente.",
+          "steps": [
+            "Confirmar se a área é APP e qual hipótese legal a caracteriza.",
+            "Medir/estimar a faixa protegida aplicável.",
+            "Identificar a intervenção realizada e sua extensão.",
+            "Verificar autorização e fundamento legal da intervenção.",
+            "Checar hipótese de utilidade pública, interesse social ou baixo impacto, quando alegada.",
+            "Documentar situação anterior/atual quando houver elementos disponíveis."
+          ],
+          "legal": [
+            "Lei Federal 12.651/2012, especialmente arts. 3º, 4º e 8º",
+            "Lei Federal 9.605/1998",
+            "Decreto Federal 6.514/2008"
+          ],
+          "documents": [
+            {
+              "title": "Lei Federal 12.651/2012",
+              "url": "https://www.planalto.gov.br/ccivil_03/_ato2011-2014/2012/lei/l12651.htm",
+              "note": "",
+              "checked": "2026-09-09"
+            },
+            {
+              "title": "Lei Federal 9.605/1998",
+              "url": "https://www.planalto.gov.br/ccivil_03/leis/l9605.htm",
+              "note": "",
+              "checked": "2026-09-09"
+            },
+            {
+              "title": "Decreto Federal 6.514/2008",
+              "url": "https://www.planalto.gov.br/ccivil_03/_ato2007-2010/2008/decreto/d6514.htm",
+              "note": "",
+              "checked": "2026-09-09"
+            }
+          ]
+        },
+        {
+          "title": "Produtos e subprodutos florestais",
+          "tags": [
+            "madeira",
+            "dof",
+            "carvão",
+            "transporte"
+          ],
+          "summary": "Conferência básica de transporte e origem de produtos florestais.",
+          "steps": [
+            "Identificar produto/subproduto e espécie, quando possível.",
+            "Conferir documento de origem/autorização exigível e nota fiscal.",
+            "Comparar quantidade, unidade de medida, origem, destino e veículo.",
+            "Registrar divergências por fotografia e medição/cubagem quando pertinente.",
+            "Verificar eventual apreensão e demais medidas administrativas cabíveis conforme norma aplicável."
+          ],
+          "legal": [
+            "Lei Federal 9.605/1998, art. 46",
+            "Decreto Federal 6.514/2008"
+          ],
+          "documents": [
+            {
+              "title": "Lei Federal 9.605/1998",
+              "url": "https://www.planalto.gov.br/ccivil_03/leis/l9605.htm",
+              "note": "",
+              "checked": "2026-09-09"
+            },
+            {
+              "title": "Decreto Federal 6.514/2008",
+              "url": "https://www.planalto.gov.br/ccivil_03/_ato2007-2010/2008/decreto/d6514.htm",
+              "note": "",
+              "checked": "2026-09-09"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "fauna",
+      "title": "Fauna",
+      "icon": "🐾",
+      "description": "Fauna silvestre, cativeiro, transporte, maus-tratos e destinação.",
+      "items": [
+        {
+          "title": "Fauna silvestre em cativeiro",
+          "tags": [
+            "fauna",
+            "cativeiro",
+            "animal silvestre"
+          ],
+          "summary": "Roteiro para atendimento de ocorrência com espécime silvestre mantido em cativeiro.",
+          "steps": [
+            "Identificar as espécies e a quantidade de indivíduos.",
+            "Verificar marcação, anilha, microchip ou documento de origem, quando aplicável.",
+            "Solicitar autorização/licença pertinente.",
+            "Avaliar condições de manutenção e sinais de maus-tratos.",
+            "Registrar fotografias e condições do local.",
+            "Providenciar destinação conforme protocolo e orientação do órgão competente."
+          ],
+          "legal": [
+            "Lei Federal 9.605/1998, art. 29",
+            "Decreto Federal 6.514/2008, art. 24"
+          ],
+          "documents": [
+            {
+              "title": "Lei Federal 9.605/1998",
+              "url": "https://www.planalto.gov.br/ccivil_03/leis/l9605.htm",
+              "note": "",
+              "checked": "2026-09-09"
+            },
+            {
+              "title": "Decreto Federal 6.514/2008",
+              "url": "https://www.planalto.gov.br/ccivil_03/_ato2007-2010/2008/decreto/d6514.htm",
+              "note": "",
+              "checked": "2026-09-09"
+            }
+          ]
+        },
+        {
+          "title": "Maus-tratos a animais",
+          "tags": [
+            "maus-tratos",
+            "fauna",
+            "animal"
+          ],
+          "summary": "Coleta de elementos para ocorrência envolvendo possível abuso ou maus-tratos.",
+          "steps": [
+            "Preservar a segurança das pessoas e animais.",
+            "Registrar condição corporal, lesões, ambiente, água, alimento e abrigo.",
+            "Identificar responsável, testemunhas e histórico conhecido.",
+            "Quando necessário, buscar avaliação técnica/veterinária.",
+            "Registrar fotografias e vídeos contextualizados.",
+            "Verificar medidas de proteção e responsabilização cabíveis."
+          ],
+          "legal": [
+            "Lei Federal 9.605/1998, art. 32",
+            "Decreto Federal 6.514/2008"
+          ],
+          "documents": [
+            {
+              "title": "Lei Federal 9.605/1998",
+              "url": "https://www.planalto.gov.br/ccivil_03/leis/l9605.htm",
+              "note": "",
+              "checked": "2026-09-09"
+            },
+            {
+              "title": "Decreto Federal 6.514/2008",
+              "url": "https://www.planalto.gov.br/ccivil_03/_ato2007-2010/2008/decreto/d6514.htm",
+              "note": "",
+              "checked": "2026-09-09"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "pesca",
+      "title": "Pesca",
+      "icon": "🎣",
+      "description": "Petrechos, períodos, espécies, tamanhos, locais e transporte.",
+      "items": [
+        {
+          "title": "Fiscalização de pesca",
+          "tags": [
+            "pesca",
+            "petrecho",
+            "pescado"
+          ],
+          "summary": "Checklist geral para abordagem de atividade pesqueira.",
+          "steps": [
+            "Identificar modalidade de pesca e local.",
+            "Conferir licença quando exigível.",
+            "Identificar espécies, quantidade e tamanho do pescado.",
+            "Verificar período de defeso/restrição e regras locais.",
+            "Conferir petrechos, dimensões e quantidade.",
+            "Registrar apreensões, destinação e demais medidas conforme norma aplicável."
+          ],
+          "legal": [
+            "Lei Federal 9.605/1998",
+            "Decreto Federal 6.514/2008",
+            "Normas específicas de pesca vigentes para espécie, bacia e período"
+          ],
+          "documents": [
+            {
+              "title": "Lei Federal 9.605/1998",
+              "url": "https://www.planalto.gov.br/ccivil_03/leis/l9605.htm",
+              "note": "",
+              "checked": "2026-09-09"
+            },
+            {
+              "title": "Decreto Federal 6.514/2008",
+              "url": "https://www.planalto.gov.br/ccivil_03/_ato2007-2010/2008/decreto/d6514.htm",
+              "note": "",
+              "checked": "2026-09-09"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "recursos",
+      "title": "Recursos Hídricos",
+      "icon": "💧",
+      "description": "Captação, lançamento, barramentos, nascentes e faixas marginais.",
+      "items": [
+        {
+          "title": "Intervenção em curso d'água",
+          "tags": [
+            "água",
+            "curso d'água",
+            "barramento",
+            "captação"
+          ],
+          "summary": "Roteiro inicial de vistoria em intervenção relacionada a recurso hídrico.",
+          "steps": [
+            "Identificar curso d'água/nascente e coordenadas.",
+            "Caracterizar obra, captação, lançamento ou barramento.",
+            "Verificar autorizações/outorgas quando exigíveis.",
+            "Avaliar eventual APP associada.",
+            "Registrar dimensões, equipamentos e impactos observáveis.",
+            "Consultar regras específicas do órgão gestor de recursos hídricos."
+          ],
+          "legal": [
+            "Lei Federal 9.433/1997",
+            "Lei Federal 12.651/2012",
+            "Normas estaduais de recursos hídricos aplicáveis"
+          ],
+          "documents": [
+            {
+              "title": "Lei Federal 9.433/1997",
+              "url": "https://www.planalto.gov.br/ccivil_03/leis/l9433.htm",
+              "note": "",
+              "checked": "2026-09-09"
+            },
+            {
+              "title": "Lei Federal 12.651/2012",
+              "url": "https://www.planalto.gov.br/ccivil_03/_ato2011-2014/2012/lei/l12651.htm",
+              "note": "",
+              "checked": "2026-09-09"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "poluicao",
+      "title": "Poluição",
+      "icon": "🏭",
+      "description": "Efluentes, resíduos, emissões, ruído e atividades potencialmente poluidoras.",
+      "items": [
+        {
+          "title": "Poluição / lançamento irregular",
+          "tags": [
+            "poluição",
+            "resíduo",
+            "efluente",
+            "emissão"
+          ],
+          "summary": "Coleta inicial de elementos em ocorrência de possível poluição.",
+          "steps": [
+            "Identificar fonte, responsável e atividade.",
+            "Registrar aspecto, origem, destino e extensão aparente da emissão/lançamento.",
+            "Evitar contato com substâncias desconhecidas ou perigosas.",
+            "Verificar licenciamento e condicionantes quando aplicáveis.",
+            "Registrar fotos, vídeos, coordenadas e testemunhas.",
+            "Acionar órgão técnico competente quando necessária análise especializada."
+          ],
+          "legal": [
+            "Lei Federal 9.605/1998, art. 54",
+            "Decreto Federal 6.514/2008",
+            "Normas CETESB e demais normas específicas aplicáveis"
+          ],
+          "documents": [
+            {
+              "title": "Lei Federal 9.605/1998",
+              "url": "https://www.planalto.gov.br/ccivil_03/leis/l9605.htm",
+              "note": "",
+              "checked": "2026-09-09"
+            },
+            {
+              "title": "Decreto Federal 6.514/2008",
+              "url": "https://www.planalto.gov.br/ccivil_03/_ato2007-2010/2008/decreto/d6514.htm",
+              "note": "",
+              "checked": "2026-09-09"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "mineracao",
+      "title": "Mineração",
+      "icon": "⛏️",
+      "description": "Extração mineral, licenciamento, autorização e recuperação de área.",
+      "items": [
+        {
+          "title": "Extração mineral",
+          "tags": [
+            "mineração",
+            "areia",
+            "argila",
+            "pedra",
+            "extração"
+          ],
+          "summary": "Checklist inicial para fiscalização de atividade minerária.",
+          "steps": [
+            "Identificar substância mineral e área efetivamente explorada.",
+            "Verificar licenciamento ambiental e título/autorização minerária pertinente.",
+            "Registrar maquinário, pilhas, acessos, áreas de lavra e beneficiamento.",
+            "Identificar intervenções em APP/vegetação associadas.",
+            "Registrar coordenadas e dimensões.",
+            "Verificar medidas administrativas e criminais conforme situação concreta."
+          ],
+          "legal": [
+            "Lei Federal 9.605/1998",
+            "Decreto Federal 6.514/2008",
+            "Legislação minerária e licenciamento ambiental aplicáveis"
+          ],
+          "documents": [
+            {
+              "title": "Lei Federal 9.605/1998",
+              "url": "https://www.planalto.gov.br/ccivil_03/leis/l9605.htm",
+              "note": "",
+              "checked": "2026-09-09"
+            },
+            {
+              "title": "Decreto Federal 6.514/2008",
+              "url": "https://www.planalto.gov.br/ccivil_03/_ato2007-2010/2008/decreto/d6514.htm",
+              "note": "",
+              "checked": "2026-09-09"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "areas",
+      "title": "APP e Áreas Protegidas",
+      "icon": "🗺️",
+      "description": "APP, Unidades de Conservação, Reserva Legal e áreas especialmente protegidas.",
+      "items": [
+        {
+          "title": "Faixas marginais de curso d'água natural",
+          "tags": [
+            "app",
+            "rio",
+            "curso d'água",
+            "faixa marginal"
+          ],
+          "summary": "Referência geral do Código Florestal para APP ao longo de cursos d'água naturais perenes e intermitentes, excluídos os efêmeros.",
+          "steps": [
+            "Medir a largura do curso d'água a partir da borda da calha do leito regular.",
+            "Aplicar a faixa mínima correspondente prevista no art. 4º da Lei 12.651/2012.",
+            "Verificar regras especiais, áreas urbanas consolidadas e legislação local aplicável antes de concluir o enquadramento."
+          ],
+          "legal": [
+            "Lei Federal 12.651/2012, art. 4º"
+          ],
+          "documents": [
+            {
+              "title": "Lei Federal 12.651/2012",
+              "url": "https://www.planalto.gov.br/ccivil_03/_ato2011-2014/2012/lei/l12651.htm",
+              "note": "",
+              "checked": "2026-09-09"
+            }
+          ]
+        },
+        {
+          "title": "Nascentes e olhos d'água perenes",
+          "tags": [
+            "app",
+            "nascente",
+            "olho d'água"
+          ],
+          "summary": "Referência geral para APP no entorno de nascentes e olhos d'água perenes.",
+          "steps": [
+            "Confirmar a existência e perenidade da nascente/olho d'água.",
+            "Delimitar o raio mínimo legal.",
+            "Registrar intervenção, vegetação e uso no entorno."
+          ],
+          "legal": [
+            "Lei Federal 12.651/2012, art. 4º"
+          ],
+          "documents": [
+            {
+              "title": "Lei Federal 12.651/2012",
+              "url": "https://www.planalto.gov.br/ccivil_03/_ato2011-2014/2012/lei/l12651.htm",
+              "note": "",
+              "checked": "2026-09-09"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "legislacao",
+      "title": "Legislação",
+      "icon": "📚",
+      "description": "Atalhos para normas federais e estaduais essenciais.",
+      "items": [
+        {
+          "title": "Lei Federal 9.605/1998",
+          "tags": [
+            "lei",
+            "crimes ambientais",
+            "9605"
+          ],
+          "summary": "Sanções penais e administrativas derivadas de condutas e atividades lesivas ao meio ambiente.",
+          "legal": [
+            "Lei Federal 9.605/1998"
+          ],
+          "url": "https://www.planalto.gov.br/ccivil_03/leis/l9605.htm",
+          "documents": [
+            {
+              "title": "Lei Federal 9.605/1998",
+              "url": "https://www.planalto.gov.br/ccivil_03/leis/l9605.htm",
+              "note": "",
+              "checked": "2026-09-09"
+            }
+          ]
+        },
+        {
+          "title": "Decreto Federal 6.514/2008",
+          "tags": [
+            "decreto",
+            "infrações administrativas",
+            "6514"
+          ],
+          "summary": "Infrações e sanções administrativas ao meio ambiente e processo administrativo federal.",
+          "legal": [
+            "Decreto Federal 6.514/2008"
+          ],
+          "url": "https://www.planalto.gov.br/ccivil_03/_ato2007-2010/2008/decreto/d6514compilado.htm",
+          "documents": [
+            {
+              "title": "Decreto Federal 6.514/2008",
+              "url": "https://www.planalto.gov.br/ccivil_03/_ato2007-2010/2008/decreto/d6514.htm",
+              "note": "",
+              "checked": "2026-09-09"
+            }
+          ]
+        },
+        {
+          "title": "Lei Federal 12.651/2012",
+          "tags": [
+            "código florestal",
+            "12651",
+            "app"
+          ],
+          "summary": "Proteção da vegetação nativa, APP, Reserva Legal e demais institutos.",
+          "legal": [
+            "Lei Federal 12.651/2012"
+          ],
+          "url": "https://www.planalto.gov.br/ccivil_03/_ato2011-2014/2012/lei/l12651.htm",
+          "documents": [
+            {
+              "title": "Lei Federal 12.651/2012",
+              "url": "https://www.planalto.gov.br/ccivil_03/_ato2011-2014/2012/lei/l12651.htm",
+              "note": "",
+              "checked": "2026-09-09"
+            }
+          ]
+        },
+        {
+          "title": "Decreto Estadual SP 64.456/2019",
+          "tags": [
+            "são paulo",
+            "infração ambiental",
+            "64456"
+          ],
+          "summary": "Procedimento estadual para apuração de infrações ambientais e imposição de sanções no SEAQUA.",
+          "legal": [
+            "Decreto Estadual 64.456/2019"
+          ],
+          "url": "https://www.al.sp.gov.br/repositorio/legislacao/decreto/2019/decreto-64456-10.09.2019.html",
+          "documents": [
+            {
+              "title": "Decreto Estadual SP 64.456/2019",
+              "url": "https://www.al.sp.gov.br/repositorio/legislacao/decreto/2019/decreto-64456-10.09.2019.html",
+              "note": "Consultar alterações na base da ALESP.",
+              "checked": "2026-09-09"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "referencia",
+      "title": "Biblioteca Operacional",
+      "icon": "🗂️",
+      "description": "Materiais da referência com fontes oficiais localizadas e documentos pendentes de envio.",
+      "items": [
+        {
+          "title": "GPO - FEV/24 / Guia de Procedimentos Operacional",
+          "summary": "Item observado no módulo Legislacao do aplicativo de referência.",
+          "tags": [
+            "referência",
+            "legislacao"
+          ],
+          "legal": [],
+          "documents": [],
+          "document_status": "pendente"
+        },
+        {
+          "title": "Resolução SIMA 05/21 (com alterações)",
+          "summary": "Item observado no módulo Legislacao do aplicativo de referência.",
+          "tags": [
+            "referência",
+            "legislacao"
+          ],
+          "legal": [],
+          "documents": [
+            {
+              "title": "SIMA 05/2021 — texto original",
+              "url": "https://smastr16.blob.core.windows.net/legislacao/sites/262/2022/07/2021resolucao_sima_005_2021.pdf",
+              "note": "Este PDF não é uma consolidação atualizada. Consultar alterações antes do uso.",
+              "checked": "2026-09-09"
+            },
+            {
+              "title": "SIMA 05/2021 — cadastro oficial e alterações",
+              "url": "https://semil.sp.gov.br/legislacao/2022/07/resolucao-sima-005-21/",
+              "note": "",
+              "checked": "2026-09-09"
+            },
+            {
+              "title": "SEMIL 18/2025 — alteração publicada no DOE, página 97",
+              "url": "https://do-api-publication-pdf.doe.sp.gov.br/v1/editions/17224055-e6ff-4cdf-be99-c9de10b728f9#page=97",
+              "note": "",
+              "checked": "2026-09-09"
+            },
+            {
+              "title": "Resolução SEMIL 21/2024 — alteração",
+              "url": "https://smastr16.blob.core.windows.net/legislacao/sites/5/2024/04/RESOLUCAO-SEMIL-021-2024-PAGINA-60.pdf",
+              "note": "Alterações à SIMA 05/2021 e à SMA 81/2017.",
+              "checked": "2026-09-09"
+            },
+            {
+              "title": "Resolução SEMIL 43/2025 — alteração",
+              "url": "https://smastr16.blob.core.windows.net/legislacao/sites/5/2025/11/RESOLUCAO-SEMIL-043-2025.pdf",
+              "note": "Alteração posterior localizada. A lista não equivale a uma consolidação integral.",
+              "checked": "2026-09-09"
+            }
+          ],
+          "document_status": "localizado"
+        },
+        {
+          "title": "Instrução Normativa IBAMA 10",
+          "summary": "Item observado no módulo Legislacao do aplicativo de referência.",
+          "tags": [
+            "referência",
+            "legislacao"
+          ],
+          "legal": [],
+          "documents": [
+            {
+              "title": "IN IBAMA 10/2011 — identificação a confirmar",
+              "url": "https://www.ibama.gov.br/component/legislacao/?codRev=19078&cod_rev=19078&force=1&legislacao=119913&view=legislacao",
+              "note": "A V2 não informa o ano. Fonte correlata sobre passeriformes; confirmar se é a norma desejada. O cadastro do Ibama indica revogação parcial.",
+              "checked": "2026-09-09"
+            }
+          ],
+          "document_status": "confirmar_ano"
+        },
+        {
+          "title": "Lei 12.651/12 - Código Florestal",
+          "summary": "Item observado no módulo Legislacao do aplicativo de referência.",
+          "tags": [
+            "referência",
+            "legislacao"
+          ],
+          "legal": [],
+          "documents": [
+            {
+              "title": "Lei Federal 12.651/2012",
+              "url": "https://www.planalto.gov.br/ccivil_03/_ato2011-2014/2012/lei/l12651.htm",
+              "note": "",
+              "checked": "2026-09-09"
+            }
+          ],
+          "document_status": "localizado"
+        },
+        {
+          "title": "Lei 13.052 - Soltura de Animais",
+          "summary": "Item observado no módulo Legislacao do aplicativo de referência.",
+          "tags": [
+            "referência",
+            "legislacao"
+          ],
+          "legal": [],
+          "documents": [
+            {
+              "title": "Lei Federal 13.052/2014",
+              "url": "https://planalto.gov.br/ccivil_03/_ato2011-2014/2014/lei/l13052.htm",
+              "note": "",
+              "checked": "2026-09-09"
+            }
+          ],
+          "document_status": "localizado"
+        },
+        {
+          "title": "Lei 5.197/67 - Proteção à Fauna",
+          "summary": "Item observado no módulo Legislacao do aplicativo de referência.",
+          "tags": [
+            "referência",
+            "legislacao"
+          ],
+          "legal": [],
+          "documents": [
+            {
+              "title": "Lei Federal 5.197/1967",
+              "url": "https://www.planalto.gov.br/ccivil_03/leis/l5197.htm",
+              "note": "",
+              "checked": "2026-09-09"
+            }
+          ],
+          "document_status": "localizado"
+        },
+        {
+          "title": "GPO - FEV/24",
+          "summary": "Item observado no módulo Fauna do aplicativo de referência.",
+          "tags": [
+            "referência",
+            "fauna"
+          ],
+          "legal": [],
+          "documents": [],
+          "document_status": "pendente"
+        },
+        {
+          "title": "Manual da Fauna Silvestre Brasileira",
+          "summary": "Item observado no módulo Fauna do aplicativo de referência.",
+          "tags": [
+            "referência",
+            "fauna"
+          ],
+          "legal": [],
+          "documents": [],
+          "document_status": "pendente"
+        },
+        {
+          "title": "IN IBAMA 10",
+          "summary": "Item observado no módulo Fauna do aplicativo de referência.",
+          "tags": [
+            "referência",
+            "fauna"
+          ],
+          "legal": [],
+          "documents": [
+            {
+              "title": "IN IBAMA 10/2011 — identificação a confirmar",
+              "url": "https://www.ibama.gov.br/component/legislacao/?codRev=19078&cod_rev=19078&force=1&legislacao=119913&view=legislacao",
+              "note": "A V2 não informa o ano. Fonte correlata sobre passeriformes; confirmar se é a norma desejada. O cadastro do Ibama indica revogação parcial.",
+              "checked": "2026-09-09"
+            }
+          ],
+          "document_status": "confirmar_ano"
+        },
+        {
+          "title": "Decreto 69.582 - Destinação de Animais",
+          "summary": "Item observado no módulo Fauna do aplicativo de referência.",
+          "tags": [
+            "referência",
+            "fauna"
+          ],
+          "legal": [],
+          "documents": [
+            {
+              "title": "Decreto Estadual 69.582/2025 — resgate de fauna silvestre",
+              "url": "https://www.al.sp.gov.br/norma/211017",
+              "note": "O título abreviado da V2 menciona destinação; a ementa oficial trata das atribuições e responsabilidades no resgate.",
+              "checked": "2026-09-09"
+            }
+          ],
+          "document_status": "localizado"
+        },
+        {
+          "title": "Res. SEMIL 09/25 - Manejo da Fauna Silvestre",
+          "summary": "Item observado no módulo Fauna do aplicativo de referência.",
+          "tags": [
+            "referência",
+            "fauna"
+          ],
+          "legal": [],
+          "documents": [
+            {
+              "title": "Resolução SEMIL 09/2025",
+              "url": "https://sigam.ambiente.sp.gov.br/sigam3/repositorio/573/documentos/Resolu%C3%A7%C3%A3o_SEMIL_09_2025.pdf",
+              "note": "",
+              "checked": "2026-09-09"
+            }
+          ],
+          "document_status": "localizado"
+        },
+        {
+          "title": "Res. SIMA 94 e 95/22 - Manejo de Animal...",
+          "summary": "Item observado no módulo Fauna do aplicativo de referência.",
+          "tags": [
+            "referência",
+            "fauna"
+          ],
+          "legal": [],
+          "documents": [
+            {
+              "title": "Resolução SIMA 94/2022",
+              "url": "https://sigam.ambiente.sp.gov.br/sigam3/repositorio/573/documentos/Resolucao_sima_094_2022.pdf",
+              "note": "",
+              "checked": "2026-09-09"
+            },
+            {
+              "title": "Resolução SIMA 95/2022",
+              "url": "https://sigam.ambiente.sp.gov.br/sigam3/repositorio/573/documentos/Resolucao_sima_095_2022.pdf",
+              "note": "",
+              "checked": "2026-09-09"
+            }
+          ],
+          "document_status": "localizado"
+        },
+        {
+          "title": "Res. SEMIL 09/25 - Manejo Fauna Exótica",
+          "summary": "Item observado no módulo Fauna do aplicativo de referência.",
+          "tags": [
+            "referência",
+            "fauna"
+          ],
+          "legal": [],
+          "documents": [
+            {
+              "title": "Resolução SEMIL 09/2025",
+              "url": "https://sigam.ambiente.sp.gov.br/sigam3/repositorio/573/documentos/Resolu%C3%A7%C3%A3o_SEMIL_09_2025.pdf",
+              "note": "",
+              "checked": "2026-09-09"
+            }
+          ],
+          "document_status": "localizado"
+        },
+        {
+          "title": "Sol. de Bloqueio de Pátio Madeireiro",
+          "summary": "Item observado no módulo Anexos do aplicativo de referência.",
+          "tags": [
+            "referência",
+            "anexos"
+          ],
+          "legal": [],
+          "documents": [],
+          "document_status": "pendente"
+        },
+        {
+          "title": "Termo de Dest. de Materiais e Animais",
+          "summary": "Item observado no módulo Anexos do aplicativo de referência.",
+          "tags": [
+            "referência",
+            "anexos"
+          ],
+          "legal": [],
+          "documents": [],
+          "document_status": "pendente"
+        },
+        {
+          "title": "Relatório de Serviço Operacional",
+          "summary": "Item observado no módulo Anexos do aplicativo de referência.",
+          "tags": [
+            "referência",
+            "anexos"
+          ],
+          "legal": [],
+          "documents": [],
+          "document_status": "pendente"
+        },
+        {
+          "title": "Termo de Apreensão",
+          "summary": "Item observado no módulo Anexos do aplicativo de referência.",
+          "tags": [
+            "referência",
+            "anexos"
+          ],
+          "legal": [],
+          "documents": [],
+          "document_status": "pendente"
+        },
+        {
+          "title": "Plan. Fiscalização Madeireira",
+          "summary": "Item observado no módulo Anexos do aplicativo de referência.",
+          "tags": [
+            "referência",
+            "anexos"
+          ],
+          "legal": [],
+          "documents": [],
+          "document_status": "pendente"
+        },
+        {
+          "title": "Sol. Bloqueio/Desbloqueio de Criador Amador/...",
+          "summary": "Item observado no módulo Anexos do aplicativo de referência.",
+          "tags": [
+            "referência",
+            "anexos"
+          ],
+          "legal": [],
+          "documents": [],
+          "document_status": "pendente"
+        },
+        {
+          "title": "Tabela 01 - Características da Vegetação - Bio...",
+          "summary": "Item observado no módulo Anexos do aplicativo de referência.",
+          "tags": [
+            "referência",
+            "anexos"
+          ],
+          "legal": [],
+          "documents": [],
+          "document_status": "pendente"
+        },
+        {
+          "title": "Tabela 02 - Características da Vegetação - Bio...",
+          "summary": "Item observado no módulo Anexos do aplicativo de referência.",
+          "tags": [
+            "referência",
+            "anexos"
+          ],
+          "legal": [],
+          "documents": [],
+          "document_status": "pendente"
+        },
+        {
+          "title": "Planilha de Nexo Causal - SP SEM FOGO",
+          "summary": "Item observado no módulo Anexos do aplicativo de referência.",
+          "tags": [
+            "referência",
+            "anexos"
+          ],
+          "legal": [],
+          "documents": [],
+          "document_status": "pendente"
+        },
+        {
+          "title": "Planilha Dinâmica - Nexo Causal",
+          "summary": "Item observado em Operações > SP SEM FOGO 2026.",
+          "tags": [
+            "referência",
+            "operações",
+            "sp sem fogo 2026"
+          ],
+          "legal": [],
+          "documents": [],
+          "document_status": "pendente"
+        },
+        {
+          "title": "Portaria 01, 20/24 - Altera Portaria CFA...",
+          "summary": "Item observado em Operações > SP SEM FOGO 2026.",
+          "tags": [
+            "referência",
+            "operações",
+            "sp sem fogo 2026"
+          ],
+          "legal": [],
+          "documents": [
+            {
+              "title": "Portaria CFB 01/2024",
+              "url": "https://sigam.ambiente.sp.gov.br/sigam3/Repositorio/472/Documentos/Portaria-CFB-01-2024.pdf",
+              "note": "Altera parcialmente a CFA 16/2017. Corresponde à alteração de 2024 com título truncado no pacote.",
+              "checked": "2026-09-09"
+            }
+          ],
+          "document_status": "localizado"
+        },
+        {
+          "title": "Portaria CFA - 16/2017 - Critérios Nexo...",
+          "summary": "Item observado em Operações > SP SEM FOGO 2026.",
+          "tags": [
+            "referência",
+            "operações",
+            "sp sem fogo 2026"
+          ],
+          "legal": [],
+          "documents": [
+            {
+              "title": "Portaria CFA 16/2017",
+              "url": "https://sigam.ambiente.sp.gov.br/sigam3/Repositorio/472/Documentos/portaria_cfa_16_2017_nexo_causal_em_incendio.pdf",
+              "note": "Texto original; consultar também a alteração CFB 01/2024.",
+              "checked": "2026-09-09"
+            },
+            {
+              "title": "Portaria CFB 01/2024",
+              "url": "https://sigam.ambiente.sp.gov.br/sigam3/Repositorio/472/Documentos/Portaria-CFB-01-2024.pdf",
+              "note": "Altera parcialmente a CFA 16/2017. Corresponde à alteração de 2024 com título truncado no pacote.",
+              "checked": "2026-09-09"
+            }
+          ],
+          "document_status": "localizado"
+        },
+        {
+          "title": "Res. SEMIL 27/25 - Susp. Queima de P...",
+          "summary": "Item observado em Operações > SP SEM FOGO 2026.",
+          "tags": [
+            "referência",
+            "operações",
+            "sp sem fogo 2026"
+          ],
+          "legal": [],
+          "documents": [
+            {
+              "title": "Resolução SEMIL 27/2025 — publicação de 2025",
+              "url": "https://smastr16.blob.core.windows.net/legislacao/sites/5/2025/07/RESOLUCAO-SEMIL-027-2025.pdf",
+              "note": "Referência histórica do pacote. Para a temporada de 2026, consultar a norma e os comunicados atuais no SIGAM.",
+              "checked": "2026-09-09"
+            },
+            {
+              "title": "SIGAM/CETESB — comunicados atuais de suspensão de queima",
+              "url": "https://sigam.ambiente.sp.gov.br/sigam3/default.aspx?idPagina=123",
+              "note": "O portal faz referência à Resolução SEMIL 21/2026.",
+              "checked": "2026-09-09"
+            }
+          ],
+          "document_status": "localizado"
+        },
+        {
+          "title": "Res. SMA 81/2017 - Fogo em área Agro...",
+          "summary": "Item observado em Operações > SP SEM FOGO 2026.",
+          "tags": [
+            "referência",
+            "operações",
+            "sp sem fogo 2026"
+          ],
+          "legal": [],
+          "documents": [
+            {
+              "title": "Resolução SMA 81/2017",
+              "url": "https://www.imprensaoficial.com.br/DO/GatewayPDF.aspx?link=%2F2017%2Fexecutivo+secao+i%2Fagosto%2F19%2Fpag_0058_3F86U9IH504PPe489HU1FS74R4S.pdf",
+              "note": "Publicação original. Alterada pela Resolução SEMIL 21/2024, conforme o catálogo SIGAM.",
+              "checked": "2026-09-09"
+            },
+            {
+              "title": "Catálogo oficial SP Sem Fogo — normas e alterações",
+              "url": "https://sigam.ambiente.sp.gov.br/sigam3/Default.aspx?idPagina=13232",
+              "note": "",
+              "checked": "2026-09-09"
+            },
+            {
+              "title": "Resolução SEMIL 21/2024 — alteração",
+              "url": "https://smastr16.blob.core.windows.net/legislacao/sites/5/2024/04/RESOLUCAO-SEMIL-021-2024-PAGINA-60.pdf",
+              "note": "Alterações à SIMA 05/2021 e à SMA 81/2017.",
+              "checked": "2026-09-09"
+            }
+          ],
+          "document_status": "localizado"
+        },
+        {
+          "title": "Modelo de TVA",
+          "summary": "Item observado em Operações > SP SEM FOGO 2026.",
+          "tags": [
+            "referência",
+            "operações",
+            "sp sem fogo 2026"
+          ],
+          "legal": [],
+          "documents": [],
+          "document_status": "pendente"
+        },
+        {
+          "title": "Planilha de Nexo Causal - Excel",
+          "summary": "Item observado em Operações > SP SEM FOGO 2026.",
+          "tags": [
+            "referência",
+            "operações",
+            "sp sem fogo 2026"
+          ],
+          "legal": [],
+          "documents": [],
+          "document_status": "pendente"
+        },
+        {
+          "title": "Inserção de Resultados - ALGAE - IV",
+          "summary": "Item observado em Operações > ALGAE - TIETÊ.",
+          "tags": [
+            "referência",
+            "operações",
+            "algae - tietê"
+          ],
+          "legal": [],
+          "documents": [],
+          "document_status": "pendente"
+        }
+      ]
+    }
+  ],
+  "checklists": [
+    {
+      "id": "vistoria",
+      "title": "Vistoria Ambiental Geral",
+      "items": [
+        "Confirmar endereço/coordenadas",
+        "Identificar envolvidos e responsáveis",
+        "Registrar visão geral do local",
+        "Fotografar elementos materiais e contexto",
+        "Verificar licença/autorização e validade",
+        "Conferir condicionantes",
+        "Medir/estimar área, volume ou quantidade",
+        "Identificar APP/UC/área protegida",
+        "Anotar equipamentos, veículos e instrumentos",
+        "Registrar testemunhas e declarações relevantes",
+        "Verificar necessidade de apreensão/embargo/outra medida",
+        "Revisar enquadramento antes de finalizar"
+      ]
+    },
+    {
+      "id": "documentos",
+      "title": "Conferência de Licença/Autorização",
+      "items": [
+        "Órgão emissor",
+        "Número do documento",
+        "Titular/beneficiário",
+        "CPF/CNPJ",
+        "Local autorizado",
+        "Coordenadas/polígono",
+        "Objeto autorizado",
+        "Quantidade/área/volume",
+        "Prazo de validade",
+        "Condicionantes",
+        "Responsável técnico",
+        "Compatibilidade entre documento e situação encontrada"
+      ]
+    }
+  ],
+  "templates": [
+    {
+      "id": "bopamb",
+      "title": "Texto-base para BOPAmb",
+      "fields": [
+        "data",
+        "hora",
+        "municipio",
+        "local",
+        "coordenadas",
+        "fato",
+        "responsavel",
+        "documentos",
+        "medicoes",
+        "providencias"
+      ],
+      "note": "Modelo de apoio à redação. Deve ser revisado e adaptado ao caso concreto e aos padrões institucionais vigentes."
+    }
+  ],
+  "sources": [
+    {
+      "title": "Lei Federal 9.605/1998",
+      "url": "https://www.planalto.gov.br/ccivil_03/leis/l9605.htm"
+    },
+    {
+      "title": "Decreto Federal 6.514/2008 – texto compilado",
+      "url": "https://www.planalto.gov.br/ccivil_03/_ato2007-2010/2008/decreto/d6514compilado.htm"
+    },
+    {
+      "title": "Lei Federal 12.651/2012",
+      "url": "https://www.planalto.gov.br/ccivil_03/_ato2011-2014/2012/lei/l12651.htm"
+    },
+    {
+      "title": "Decreto Estadual SP 64.456/2019",
+      "url": "https://www.al.sp.gov.br/repositorio/legislacao/decreto/2019/decreto-64456-10.09.2019.html"
+    }
+  ],
+  "reference_extracted": {
+    "source": "Vídeo de navegação do app Glide 2ciapamb",
+    "tabs": [
+      "Legislação Ambiental",
+      "Fauna",
+      "Flora",
+      "Operações",
+      "IA Ambiental",
+      "Anexos"
+    ],
+    "legislacao": [
+      "GPO - FEV/24 / Guia de Procedimentos Operacional",
+      "Resolução SIMA 05/21 (com alterações)",
+      "Instrução Normativa IBAMA 10",
+      "Lei 12.651/12 - Código Florestal",
+      "Lei 13.052 - Soltura de Animais",
+      "Lei 5.197/67 - Proteção à Fauna"
+    ],
+    "fauna": [
+      "GPO - FEV/24",
+      "Manual da Fauna Silvestre Brasileira",
+      "IN IBAMA 10",
+      "Decreto 69.582 - Destinação de Animais",
+      "Res. SEMIL 09/25 - Manejo da Fauna Silvestre",
+      "Res. SIMA 94 e 95/22 - Manejo de Animal...",
+      "Res. SEMIL 09/25 - Manejo Fauna Exótica"
+    ],
+    "operacoes": {
+      "SP SEM FOGO 2026": [
+        "Planilha Dinâmica - Nexo Causal",
+        "Portaria 01, 20/24 - Altera Portaria CFA...",
+        "Portaria CFA - 16/2017 - Critérios Nexo...",
+        "Res. SEMIL 27/25 - Susp. Queima de P...",
+        "Res. SMA 81/2017 - Fogo em área Agro...",
+        "Modelo de TVA",
+        "Planilha de Nexo Causal - Excel"
+      ],
+      "ALGAE - TIETÊ": [
+        "Inserção de Resultados - ALGAE - IV"
+      ]
+    },
+    "anexos": [
+      "Sol. de Bloqueio de Pátio Madeireiro",
+      "Termo de Dest. de Materiais e Animais",
+      "Relatório de Serviço Operacional",
+      "Termo de Apreensão",
+      "Plan. Fiscalização Madeireira",
+      "Sol. Bloqueio/Desbloqueio de Criador Amador/...",
+      "Tabela 01 - Características da Vegetação - Bio...",
+      "Tabela 02 - Características da Vegetação - Bio...",
+      "Planilha de Nexo Causal - SP SEM FOGO"
+    ]
+  },
+  "nexo_causal": {
+    "title": "Nexo Causal – Incêndio / SP Sem Fogo",
+    "basis": "Estrutura observada no vídeo. Pesos oficiais não foram inferidos.",
+    "criteria": [
+      {
+        "n": "I",
+        "title": "Aceiros de UC, APP, Reserva Legal e Fragmento Florestal",
+        "fields": [
+          [
+            "Classificação / medida",
+            [
+              "Não informado",
+              "Adequada",
+              "Inadequada"
+            ]
+          ],
+          [
+            "Condições de manutenção",
+            [
+              "Não informado",
+              "Existente e operacionalizado",
+              "Existente e não-operacionalizado",
+              "Inexistente"
+            ]
+          ],
+          [
+            "Art. 4º § único (atingiu vegetação natural?)",
+            [
+              "Não informado",
+              "Sim",
+              "Não"
+            ]
+          ]
+        ]
+      },
+      {
+        "n": "II",
+        "title": "Aceiros de Estrada/Rodovia e Via de Acesso Movimentada",
+        "fields": [
+          [
+            "Classificação / medida",
+            [
+              "Não informado",
+              "Adequada",
+              "Inadequada"
+            ]
+          ],
+          [
+            "Condições de manutenção",
+            [
+              "Não informado",
+              "Existente e operacionalizado",
+              "Existente e não-operacionalizado",
+              "Inexistente"
+            ]
+          ]
+        ]
+      },
+      {
+        "n": "III",
+        "title": "Obstáculos / medidas preventivas",
+        "fields": [
+          [
+            "Situação",
+            [
+              "Não informado",
+              "Obstáculos existentes",
+              "Obstáculos inexistentes",
+              "Desnecessários"
+            ]
+          ]
+        ]
+      },
+      {
+        "n": "V",
+        "title": "Recorrência (últimos 2 anos)",
+        "fields": [
+          [
+            "Classificação / medida",
+            [
+              "Não informado",
+              "Sem recorrência",
+              "Com recorrência"
+            ]
+          ]
+        ]
+      },
+      {
+        "n": "IX",
+        "title": "Origem do Incêndio",
+        "fields": [
+          [
+            "Classificação / medida",
+            [
+              "Não informado",
+              "Determinada",
+              "Indeterminada"
+            ]
+          ]
+        ]
+      },
+      {
+        "n": "XII",
+        "title": "Critério XII",
+        "fields": [
+          [
+            "Classificação / medida",
+            [
+              "Não informado",
+              "Adequada",
+              "Inadequada"
+            ]
+          ]
+        ]
+      },
+      {
+        "n": "XIII",
+        "title": "Aceiros em Carreadores",
+        "fields": [
+          [
+            "Classificação / medida",
+            [
+              "Não informado",
+              "Adequada",
+              "Inadequada"
+            ]
+          ],
+          [
+            "Condições de manutenção",
+            [
+              "Não informado",
+              "Existente e operacionalizado",
+              "Existente e não-operacionalizado",
+              "Inexistente"
+            ]
+          ]
+        ]
+      },
+      {
+        "n": "XIV",
+        "title": "Critério XIV",
+        "fields": [
+          [
+            "Classificação / medida",
+            [
+              "Não informado",
+              "Adequada",
+              "Inadequada"
+            ]
+          ]
+        ]
+      }
+    ]
+  },
+  "source_audit": {
+    "date": "2026-09-09",
+    "scope": "Identificação documental e fontes públicas; não representa revisão jurídica integral ou certificação de vigência.",
+    "pending": [
+      "GPO - FEV/24 / Guia de Procedimentos Operacional",
+      "Instrução Normativa IBAMA 10 — confirmar ano (encontrada IN 10/2011)",
+      "GPO - FEV/24",
+      "Manual da Fauna Silvestre Brasileira",
+      "IN IBAMA 10 — confirmar ano (encontrada IN 10/2011)",
+      "Sol. de Bloqueio de Pátio Madeireiro",
+      "Termo de Dest. de Materiais e Animais",
+      "Relatório de Serviço Operacional",
+      "Termo de Apreensão",
+      "Plan. Fiscalização Madeireira",
+      "Sol. Bloqueio/Desbloqueio de Criador Amador/...",
+      "Tabela 01 - Características da Vegetação - Bio...",
+      "Tabela 02 - Características da Vegetação - Bio...",
+      "Planilha de Nexo Causal - SP SEM FOGO",
+      "Planilha Dinâmica - Nexo Causal",
+      "Modelo de TVA",
+      "Planilha de Nexo Causal - Excel",
+      "Inserção de Resultados - ALGAE - IV"
+    ]
+  }
+}

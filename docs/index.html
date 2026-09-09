@@ -1,22 +1,50 @@
 <!doctype html>
 <html lang="pt-BR">
 <head>
-  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#143f32">
-  <meta name="description" content="Guias de estudo e organização pessoal para o patrulheiro ambiental.">
-  <title>Escola Superior de Polícia Ambiental</title>
-  <link rel="icon" href="./icon.svg" type="image/svg+xml"><link rel="manifest" href="./manifest.webmanifest"><link rel="stylesheet" href="./styles.css">
-  <script src="./app.js" defer></script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#163d2a">
+<title>Escola Superior de Polícia Ambiental</title>
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <a class="skip" href="#conteudo">Pular para o conteúdo</a>
-  <header><div class="brand"><span class="monogram" aria-hidden="true">EA</span><div><strong>ESCOLA SUPERIOR</strong><span>DE POLÍCIA AMBIENTAL</span></div></div><span id="connection" class="connection">Apoio ao patrulheiro</span></header>
-  <div class="layout">
-    <aside><p class="eyebrow">SEU ESPAÇO DE APOIO</p><nav aria-label="Principal"><a href="#guias" data-view="guias">01 <span>Guias de campo</span></a><a href="#estudos" data-view="estudos">02 <span>Trilhas de estudo</span></a><a href="#checklist" data-view="checklist">03 <span>Checklist de campo</span></a><a href="#caderno" data-view="caderno">04 <span>Caderno pessoal</span></a><a href="#biblioteca" data-view="biblioteca">05 <span>Biblioteca</span></a></nav><div class="aside-note"><span class="eyebrow">CONHECIMENTO EM CAMPO</span><p>Observe com atenção.<br>Registre com clareza.<br>Consulte a fonte.</p><small>Projeto educacional independente · v1.0</small></div></aside>
-    <main id="conteudo" tabindex="-1"><div class="intro"><p class="eyebrow">ESCOLA SUPERIOR DE POLÍCIA AMBIENTAL</p><h1 id="page-title">Guias de campo</h1><p id="page-description"></p></div><div id="view"></div><p class="notice">Material introdutório de estudo e organização pessoal. Não substitui protocolos da instituição, capacitação técnica ou consulta à legislação vigente.</p></main>
+<header class="topbar">
+  <div>
+    <div class="eyebrow">Apoio ao Patrulheiro Ambiental • V2</div>
+    <h1>Escola Superior de Polícia Ambiental</h1>
+    <p>Consulta rápida, procedimentos, checklists e ferramentas.</p>
   </div>
-  <footer><span>Educação ambiental, todos os dias.</span><button id="install" hidden>Instalar aplicativo</button><span id="offline-status">Preparando acesso offline…</span></footer>
-  <p id="status" role="status" aria-live="polite"></p>
-  <noscript>Ative o JavaScript para acessar os guias e as ferramentas. As fontes oficiais estão no README do projeto.</noscript>
+  <button id="installBtn" class="ghost" hidden>Instalar</button>
+</header>
+
+<main>
+  <section class="hero">
+    <label class="sr-only" for="search">Pesquisar conteúdo</label><input id="search" type="search" placeholder="🔎 Pesquisar: APP, fauna, DOF, poluição..." autocomplete="off">
+    <div class="quick">
+      <button data-view="home">🏠 Início</button>
+      <button data-view="favorites">⭐ Favoritos</button>
+      <button data-view="checklists">✅ Checklists</button>
+      <button data-view="tools">🧮 Ferramentas</button>
+      <button data-view="bopamb">📝 BOPAmb</button><button data-view="nexo">🔥 Nexo causal</button>
+    </div>
+  </section>
+  <p id="appStatus" role="status" class="small">Carregando conteúdo…</p><section id="content" aria-label="Conteúdo"></section>
+</main>
+
+<nav class="bottom">
+  <button data-view="home">🏠<span>Início</span></button>
+  <button data-view="search">🔎<span>Buscar</span></button>
+  <button data-view="checklists">✅<span>Checklist</span></button>
+  <button data-view="tools">🧮<span>Ferramentas</span></button>
+  <button data-view="favorites">⭐<span>Favoritos</span></button>
+</nav>
+
+<dialog id="itemDialog" aria-label="Detalhes do conteúdo">
+  <button class="close" aria-label="Fechar detalhes" onclick="document.querySelector('#itemDialog').close()">✕</button>
+  <div id="dialogBody"></div>
+</dialog>
+
+<noscript>Ative o JavaScript para acessar o conteúdo e as ferramentas.</noscript><script src="reader.js"></script><script src="app.js"></script>
 </body>
 </html>

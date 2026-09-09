@@ -1,30 +1,134 @@
-'use strict';
-const guides = [
- {id:'fauna',title:'Fauna silvestre',tag:'FAUNA',description:'Organize observações sobre animais e o contexto do encontro.',steps:['Observe à distância e descreva o animal, o ambiente e seu comportamento sem assumir uma identificação de espécie.','Registre data, horário e localização, diferenciando observações diretas de relatos de terceiros.','Anote sinais visíveis e condições do local. O manejo exige equipe habilitada e protocolo institucional.'],question:'Ao não reconhecer uma espécie, qual é a melhor anotação?',options:['Afirmar a espécie pela semelhança','Descrever características e indicar que a identificação não foi confirmada','Omitir a observação'],answer:1,explanation:'Descrever o que foi observado mantém o registro verificável, sem transformar uma hipótese em fato.'},
- {id:'flora',title:'Vegetação e território',tag:'FLORA',description:'Um roteiro de observação de vegetação, uso do solo e alterações.',steps:['Descreva a cobertura vegetal e as alterações visíveis, sem estimar área como se fosse medição técnica.','Anote os pontos de observação e a origem das informações sobre o uso da área.','Relacione documentos apresentados para posterior verificação pela equipe competente.'],question:'Uma estimativa visual da área deve ser registrada como:',options:['Medição definitiva','Valor de multa','Estimativa, com indicação do método e da limitação'],answer:2,explanation:'O registro deve distinguir uma estimativa visual de uma medição técnica.'},
- {id:'agua',title:'Água e resíduos',tag:'RECURSOS HÍDRICOS',description:'Descreva condições aparentes e organize referências do local.',steps:['Registre características visíveis do ambiente, como cor da água e presença de resíduos, mantendo distância segura.','Diferencie sinais observados de conclusões técnicas: a aparência isolada não confirma a composição de uma substância.','Anote os pontos observados. Coletas e análises dependem de orientação técnica e procedimentos próprios.'],question:'A cor incomum de uma água permite afirmar sua composição?',options:['Não; registre a aparência e a necessidade de avaliação técnica','Sim, em qualquer situação','Sim, se houver uma fotografia'],answer:0,explanation:'A observação visual é um registro inicial; não substitui análise técnica.'},
- {id:'registro',title:'Qualidade do registro',tag:'DOCUMENTAÇÃO',description:'Separe fatos, relatos e dúvidas para produzir notas claras.',steps:['Use ordem cronológica e indique data, horário e referência do local.','Separe o que você observou, o que foi informado por terceiros e o que ainda precisa ser confirmado.','Revise a clareza das notas e siga os sistemas institucionais para registros oficiais e informações sensíveis.'],question:'Como registrar uma informação recebida de outra pessoa?',options:['Como observação própria','Como relato, deixando clara sua origem','Como conclusão técnica'],answer:1,explanation:'Indicar a origem evita confundir relato de terceiros com observação direta.'}
-];
-const sources=[['Lei nº 9.605/1998','Crimes e sanções ambientais — texto oficial.','https://www.planalto.gov.br/ccivil_03/leis/l9605.htm'],['Decreto nº 6.514/2008','Infrações e sanções administrativas ambientais — texto oficial.','https://www.planalto.gov.br/ccivil_03/_ato2007-2010/2008/decreto/d6514.htm'],['Lei nº 12.651/2012','Proteção da vegetação nativa — texto oficial.','https://www.planalto.gov.br/ccivil_03/_ato2011-2014/2012/lei/l12651.htm']];
-const checks=['Conferir orientações e protocolos da instituição.','Conferir equipamentos de proteção e comunicação previstos para a atividade.','Definir referências de data, horário e local das observações.','Distinguir fatos observados de relatos e hipóteses.','Relacionar referências de documentos e registros nos sistemas autorizados.','Revisar as notas e encaminhar pendências pelos canais institucionais.'];
-const prefix='espa:v1:';
+
+let DATA=null, currentView='home', deferredPrompt=null;
+const $=s=>document.querySelector(s), content=$('#content'), search=$('#search');
 const memory={};
-function read(key,fallback){try{const raw=localStorage.getItem(prefix+key);return raw===null?fallback:JSON.parse(raw)}catch{return memory[key]??fallback}}
-function save(key,value){memory[key]=value;try{localStorage.setItem(prefix+key,JSON.stringify(value));return true}catch{announce('Armazenamento indisponível. Exporte suas notas antes de sair.');return false}}
-function escapeHTML(value){return String(value).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
-function announce(message){document.querySelector('#status').textContent=message}
-const view=document.querySelector('#view');
-const titles={guias:['Guias de campo','Consulte roteiros introdutórios para observar e organizar informações.'],estudos:['Trilhas de estudo','Leia, pratique e acompanhe seu progresso neste dispositivo.'],checklist:['Checklist de campo','Uma lista pessoal de preparação e revisão das suas observações.'],caderno:['Caderno pessoal','Guarde notas de estudo neste navegador e exporte quando precisar.'],biblioteca:['Biblioteca','Acesse as fontes oficiais e confira o texto vigente.']};
-function completed(){const value=read('completed',[]);return Array.isArray(value)?value.filter(id=>guides.some(g=>g.id===id)):[]}
-function checked(){const value=read('checks',[]);return Array.isArray(value)?value.filter(i=>Number.isInteger(i)&&i>=0&&i<checks.length):[]}
-function navigate(){const name=location.hash.slice(1);const page=Object.hasOwn(titles,name)?name:'guias';document.querySelector('#page-title').textContent=titles[page][0];document.querySelector('#page-description').textContent=titles[page][1];document.querySelectorAll('[data-view]').forEach(a=>{if(a.dataset.view===page)a.setAttribute('aria-current','page');else a.removeAttribute('aria-current')});announce('');({guias:renderGuides,estudos:renderStudies,checklist:renderChecklist,caderno:renderNotes,biblioteca:renderLibrary})[page]()}
-function renderGuides(){view.innerHTML='<div class="toolbar"><label class="search">Buscar assunto<input id="search" type="search" placeholder="Ex.: fauna, vegetação, registros"></label></div><div class="grid" id="cards"></div>';const input=document.querySelector('#search');function filter(){const normalize=s=>s.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase();const term=normalize(input.value);const list=guides.filter(g=>normalize(g.title+' '+g.tag+' '+g.description+' '+g.steps.join(' ')).includes(term));document.querySelector('#cards').innerHTML=list.length?list.map((g,i)=>`<article class="card"><span class="card-number" aria-hidden="true">0${i+1}</span><span class="tag">${g.tag}</span><h2>${g.title}</h2><p>${g.description}</p><button data-guide="${g.id}">Abrir guia <span aria-hidden="true">↗</span><span class="sr-only"> · ${g.title}</span></button></article>`).join(''):'<p class="empty">Nenhum guia encontrado. Tente outro assunto.</p>';document.querySelectorAll('[data-guide]').forEach(b=>b.onclick=()=>renderDetail(b.dataset.guide,false))}input.oninput=filter;filter()}
-function renderStudies(){const done=completed();view.innerHTML=`<div class="progress-label">${done.length} de ${guides.length} trilhas concluídas</div><progress value="${done.length}" max="${guides.length}" aria-label="Progresso das trilhas"></progress><div class="grid">${guides.map(g=>`<article class="card"><span class="tag">${done.includes(g.id)?'CONCLUÍDA':'LEITURA + EXERCÍCIO'}</span><h2>${g.title}</h2><p>${g.description}</p><button data-study="${g.id}">${done.includes(g.id)?'Revisar':'Começar'} · ${g.title}</button></article>`).join('')}</div>`;document.querySelectorAll('[data-study]').forEach(b=>b.onclick=()=>renderDetail(b.dataset.study,true))}
-function renderDetail(id,study){const g=guides.find(g=>g.id===id);if(!g)return;view.innerHTML=`<button class="back">← Voltar ${study?'às trilhas':'aos guias'}</button><article class="panel"><span class="eyebrow">${g.tag}</span><h2 tabindex="-1" id="detail-title">${g.title}</h2><p>${g.description}</p><ol>${g.steps.map(s=>`<li>${s}</li>`).join('')}</ol><p>Roteiro educacional geral. Adapte a consulta às normas e aos protocolos da sua instituição.</p></article>${study?`<form class="panel quiz"><fieldset><legend>${g.question}</legend>${g.options.map((o,i)=>`<label><input type="radio" name="answer" value="${i}" required> ${o}</label>`).join('')}</fieldset><div class="actions"><button class="primary" type="submit">Conferir resposta</button></div><p id="feedback" role="status"></p></form>`:''}`;document.querySelector('.back').onclick=()=>{study?renderStudies():renderGuides();document.querySelector('#conteudo').focus()};document.querySelector('#detail-title').focus();if(study)document.querySelector('form').onsubmit=e=>{e.preventDefault();const answer=Number(new FormData(e.target).get('answer'));const correct=answer===g.answer;document.querySelector('#feedback').textContent=(correct?'Correto! Trilha concluída. ':'Tente novamente. ')+g.explanation;if(correct)save('completed',[...new Set([...completed(),id])])}}
-function renderChecklist(){const selected=checked();view.innerHTML=`<section class="panel"><h2>Preparação e revisão</h2><p id="check-count" class="progress-label"></p>${checks.map((c,i)=>`<label class="check-row"><input type="checkbox" value="${i}" ${selected.includes(i)?'checked':''}><span>${c}</span></label>`).join('')}<div class="actions"><button id="reset-checks">Reiniciar checklist</button></div><small>As marcações ficam somente neste navegador. Esta lista não é um procedimento operacional oficial.</small></section>`;const update=()=>{const values=[...view.querySelectorAll('input:checked')].map(i=>Number(i.value));save('checks',values);document.querySelector('#check-count').textContent=`${values.length} de ${checks.length} itens marcados`};document.querySelector('#check-count').textContent=`${selected.length} de ${checks.length} itens marcados`;view.querySelectorAll('input').forEach(i=>i.onchange=update);document.querySelector('#reset-checks').onclick=()=>{if(confirm('Limpar todas as marcações deste checklist?')){view.querySelectorAll('input').forEach(i=>i.checked=false);update()}}}
-function renderNotes(){const raw=read('notes',{});const note=raw&&typeof raw==='object'?raw:{};view.innerHTML=`<section class="panel"><h2>Minhas notas de estudo</h2><p>Salvamento automático neste dispositivo. Use apenas conteúdo não sensível; não registre dados pessoais de ocorrências. Não há envio para um servidor ou sincronização entre dispositivos.</p><label>Título<input id="note-title" type="text" maxlength="160" placeholder="Tema do estudo"></label><br><label>Anotações<textarea id="note-body" maxlength="50000" placeholder="O que aprendi? O que preciso consultar?"></textarea></label><p id="save-state" role="status"></p><div class="actions"><button id="export" class="primary">Exportar notas (.txt)</button><button id="clear-notes">Apagar notas</button></div><small>Limpar os dados do navegador pode apagar suas notas. Exporte uma cópia para guardá-las.</small></section>`;const title=document.querySelector('#note-title'),body=document.querySelector('#note-body');title.value=typeof note.title==='string'?note.title:'';body.value=typeof note.body==='string'?note.body:'';function persist(){const ok=save('notes',{title:title.value,body:body.value});document.querySelector('#save-state').textContent=ok?'Salvo neste navegador.':'Não foi possível salvar. Exporte uma cópia.'}title.oninput=body.oninput=persist;document.querySelector('#export').onclick=()=>{const blob=new Blob([`${title.value||'Notas de estudo'}\n\n${body.value}\n`],{type:'text/plain;charset=utf-8'});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download='notas-escola-ambiental.txt';document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000);announce('Exportação solicitada. Confira os downloads do navegador.')};document.querySelector('#clear-notes').onclick=()=>{if(confirm('Apagar as notas deste navegador? Exporte antes se quiser guardar uma cópia.')){title.value='';body.value='';persist()}}}
-function renderLibrary(){view.innerHTML=`<div class="panel"><h2>Referências federais</h2><p>Links para consulta online. O texto das leis não é armazenado para uso offline. Confira alterações e normas estaduais e locais aplicáveis.</p>${sources.map(([name,description,url])=>`<article><h3><a class="source" href="${url}" target="_blank" rel="noopener noreferrer">${name} ↗</a></h3><p>${description}</p></article>`).join('')}<small>Referências selecionadas em 09/09/2026. A lista não representa uma revisão jurídica integral.</small></div><div class="panel"><h2>Usar sem conexão</h2><p>Após o primeiro acesso completo, aguarde a mensagem “Conteúdo disponível offline”. Os guias, as trilhas, o checklist e o caderno poderão ser usados sem internet, enquanto os dados do site forem mantidos pelo navegador.</p><p>Para instalar, use o botão “Instalar aplicativo”, quando disponível. No Safari do iPhone ou iPad, abra Compartilhar → Adicionar à Tela de Início. A disponibilidade depende do navegador.</p></div>`}
-window.addEventListener('hashchange',navigate);navigate();
-function connection(){document.querySelector('#connection').textContent=navigator.onLine?'Apoio ao patrulheiro':'Sem conexão'}window.addEventListener('online',connection);window.addEventListener('offline',connection);connection();
-let installEvent;window.addEventListener('beforeinstallprompt',e=>{e.preventDefault();installEvent=e;document.querySelector('#install').hidden=false});document.querySelector('#install').onclick=async()=>{if(!installEvent)return;await installEvent.prompt();installEvent=null;document.querySelector('#install').hidden=true};window.addEventListener('appinstalled',()=>{document.querySelector('#install').hidden=true;announce('Aplicativo instalado.')});
-if('serviceWorker' in navigator && location.protocol!=='file:'){navigator.serviceWorker.register('./sw.js').then(()=>navigator.serviceWorker.ready).then(()=>{document.querySelector('#offline-status').textContent='Conteúdo disponível offline'}).catch(()=>{document.querySelector('#offline-status').textContent='Offline indisponível neste acesso'})}else{document.querySelector('#offline-status').textContent='Acesso offline exige HTTPS ou localhost'}
+function stored(key,fallback){try{return Object.hasOwn(memory,key)?memory[key]:JSON.parse(localStorage.getItem(key)||'null')??fallback}catch{return memory[key]??fallback}}
+function persist(key,value){memory[key]=value;try{localStorage.setItem(key,JSON.stringify(value))}catch{status('Armazenamento indisponível: alterações mantidas apenas nesta sessão.')}}
+const favs=()=>{const value=stored('favs',[]);return Array.isArray(value)?value.filter(x=>typeof x==='string'):[]};
+const setFavs=x=>persist('favs',x);
+function status(message){$('#appStatus').textContent=message}
+
+const esc=s=>(s??'').toString().replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m]));
+async function boot(){
+ try{const response=await fetch('data/content.json');if(!response.ok)throw Error();DATA=await response.json();if(!Array.isArray(DATA.modules))throw Error()}catch{content.innerHTML='<p class="warn">Não foi possível carregar o conteúdo. Conecte-se à internet no primeiro acesso e recarregue a página.</p>';status('Conteúdo indisponível.');return}
+ status('Conteúdo da V2 fornecida pelo autor. Referências e anexos sem arquivo estão identificados.');
+ renderHome();
+ document.querySelectorAll('[data-view]').forEach(b=>b.onclick=()=>navigate(b.dataset.view));
+ search.addEventListener('input',()=>renderSearch(search.value));
+ search.addEventListener('focus',()=>{if(!search.value) renderSearch('')});
+ if('serviceWorker' in navigator) navigator.serviceWorker.register('sw.js').then(()=>navigator.serviceWorker.ready).then(()=>status('Conteúdo interno disponível offline. Fontes externas precisam de conexão.')).catch(()=>status('Acesso offline indisponível neste navegador.'));
+ content.addEventListener('click',e=>{const favorite=e.target.closest('[data-favorite]');const result=e.target.closest('[data-result]');if(favorite){toggleFav(allItems()[Number(favorite.dataset.favorite)].title);return}if(result)openItem(allItems()[Number(result.dataset.result)])});
+ content.addEventListener('keydown',e=>{if((e.key==='Enter'||e.key===' ')&&e.target.matches('[role="button"]')){e.preventDefault();e.target.click()}});
+ new MutationObserver(()=>{content.querySelectorAll('article[onclick]').forEach(el=>{el.setAttribute('role','button');el.tabIndex=0});content.querySelectorAll('label').forEach((label,index)=>{const next=label.nextElementSibling;if(next&&/^(INPUT|SELECT|TEXTAREA)$/.test(next.tagName)){next.id ||= 'field-'+index;label.htmlFor=next.id}});content.querySelectorAll('.output').forEach(el=>el.setAttribute('role','status'))}).observe(content,{childList:true,subtree:true});
+}
+window.addEventListener('beforeinstallprompt',e=>{e.preventDefault();deferredPrompt=e;$('#installBtn').hidden=false});
+$('#installBtn').onclick=async()=>{if(deferredPrompt){deferredPrompt.prompt();deferredPrompt=null;$('#installBtn').hidden=true}};
+function navigate(v){currentView=v;if(v==='home')renderHome();if(v==='favorites')renderFavorites();if(v==='checklists')renderChecklists();if(v==='tools')renderTools();if(v==='bopamb')renderBopamb();if(v==='nexo')renderNexo();if(v==='search'){search.focus();renderSearch(search.value)}}
+function renderHome(){
+ currentView='home';
+ content.innerHTML=`<h2 class="section-title">Apoio ao Patrulheiro Ambiental</h2><div class="quick reference-nav"><button onclick="renderModule('legislacao')">📚 Legislação Ambiental</button><button onclick="renderModule('fauna')">🐾 Fauna</button><button onclick="renderModule('flora')">🌳 Flora</button><button onclick="renderReference('operacoes')">🚒 Operações</button><button onclick="renderReference('ia')">💡 IA Ambiental</button><button onclick="renderReference('anexos')">📎 Anexos</button></div><h2 class="section-title">Áreas de consulta</h2><div class="grid">${DATA.modules.map(m=>`<article class="card" role="button" tabindex="0" onclick="renderModule('${m.id}')"><div class="icon">${m.icon}</div><h3>${esc(m.title)}</h3><p>${esc(m.description)}</p></article>`).join('')}</div>
+ <h2 class="section-title">Acesso rápido</h2><div class="grid">
+ <article class="card" role="button" tabindex="0" onclick="renderChecklists()"><div class="icon">✅</div><h3>Checklists</h3><p>Vistoria geral e conferência de documentos.</p></article>
+ <article class="card" role="button" tabindex="0" onclick="renderTools()"><div class="icon">🧮</div><h3>Ferramentas</h3><p>APP, área, coordenadas e cálculos rápidos.</p></article>
+ <article class="card" role="button" tabindex="0" onclick="renderBopamb()"><div class="icon">📝</div><h3>Gerador BOPAmb</h3><p>Monte um texto-base com os principais dados da ocorrência.</p></article></div>
+ <p class="small">⚠️ Ferramenta de apoio. A legislação, normas institucionais e enquadramentos devem ser conferidos antes da adoção de medida administrativa ou policial.</p>`;
+}
+function renderModule(id){
+ currentView='module:'+id;
+ const m=DATA.modules.find(x=>x.id===id);
+ content.innerHTML=`<h2 class="section-title">${m.icon} ${esc(m.title)}</h2><p>${esc(m.description)}</p>`+m.items.map(i=>resultHtml(i,m)).join('');
+}
+function allItems(){return DATA.modules.flatMap(m=>m.items.map(i=>({...i,module:m.title,icon:m.icon})))}
+function renderSearch(q){
+ currentView='search';
+ const normalize=s=>s.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase();
+ q=normalize((q||'').trim());
+ let items=allItems();
+ if(q) items=items.filter(i=>normalize([i.title,i.summary,(i.tags||[]).join(' '),(i.legal||[]).join(' '),i.module].join(' ')).includes(q));
+ content.innerHTML=`<h2 class="section-title">🔎 ${q?'Resultados':'Pesquisa geral'}</h2>${items.length?items.map(i=>resultHtml(i,{title:i.module,icon:i.icon})).join(''):'<p>Nenhum resultado encontrado.</p>'}`;
+}
+function key(i){return i.title}
+function toggleFav(title){const f=favs();setFavs(f.includes(title)?f.filter(x=>x!==title):[...f,title]);if(currentView==='favorites')renderFavorites();else if(currentView.startsWith('module:'))renderModule(currentView.slice(7));else if(currentView.startsWith('reference:'))renderReference(currentView.slice(10));else renderSearch(search.value)}
+function resultHtml(i,m){
+ const index=allItems().findIndex(x=>x.title===i.title),on=favs().includes(key(i));
+ return '<article class="result"><button class="star" data-favorite="'+index+'" aria-label="Favorito: '+esc(i.title)+'" aria-pressed="'+on+'">'+(on?'★':'☆')+'</button><button class="result-open" data-result="'+index+'"><span class="meta">'+esc(m.icon||'')+' '+esc(m.title||'')+'</span><strong>'+esc(i.title)+'</strong><span>'+esc(i.summary||'')+'</span></button>'+(i.tags||[]).slice(0,4).map(t=>'<span class="pill">'+esc(t)+'</span>').join('')+'</article>';
+}
+function openItem(i){
+ if(i.documents?.length===1&&i.document_status==='localizado'&&!i.documents[0].note){openDocument(i.documents[0].url,i.documents[0].title);return}
+ let html=`<div class="meta">Consulta operacional</div><h2>${esc(i.title)}</h2><p>${esc(i.summary||'')}</p>`;
+ if(i.steps?.length)html+=`<h3>Roteiro sugerido</h3><ol class="steps">${i.steps.map(x=>`<li>${esc(x)}</li>`).join('')}</ol>`;
+ if(i.legal?.length)html+=`<h3>Base legal / referências</h3>${i.legal.map(x=>`<div class="pill">${esc(x)}</div>`).join('')}`;
+ if(i.warning)html+=`<p class="warn">⚠️ ${esc(i.warning)}</p>`;
+ if(!i.url && !i.documents?.length && (i.tags||[]).includes('referência'))html+='<p class="warn">Arquivo não incluído no pacote V2. Apenas o título foi registrado a partir da referência; documento e vigência ainda precisam ser conferidos.</p>';
+ if(i.url && !i.documents?.length && /^https:\/\//.test(i.url))html+=`<p><a href="${esc(i.url)}" target="_blank" rel="noopener">Abrir fonte oficial ↗</a></p>`;
+ if(i.documents?.length)html+='<h3>Documentos oficiais</h3>'+i.documents.map(d=>'<div class="source-entry"><button class="action" data-document="'+esc(d.url)+'" data-document-title="'+esc(d.title)+'">Ler documento · '+esc(d.title)+'</button>'+(d.note?'<p class="small">'+esc(d.note)+'</p>':'')+'</div>').join('');
+ $('#dialogBody').innerHTML=html; $('#itemDialog').showModal();
+}
+function renderFavorites(){
+ currentView='favorites'; const f=favs(), items=allItems().filter(i=>f.includes(i.title));
+ content.innerHTML=`<h2 class="section-title">⭐ Favoritos</h2>${items.length?items.map(i=>resultHtml(i,{title:i.module,icon:i.icon})).join(''):'<p>Você ainda não marcou nenhum conteúdo como favorito.</p>'}`;
+}
+function renderChecklists(){
+ currentView='checklists';const raw=stored('pamb:checks',{}),marks=raw&&typeof raw==='object'?raw:{};
+ content.innerHTML='<h2 class="section-title">✅ Checklists</h2>'+DATA.checklists.map(c=>'<section class="tool"><h3>'+esc(c.title)+'</h3>'+c.items.map((x,n)=>'<label class="check"><input type="checkbox" data-check="'+c.id+'-'+n+'" '+(marks[c.id+'-'+n]?'checked':'')+'><span>'+esc(x)+'</span></label>').join('')+'<button data-clear="'+c.id+'">Limpar marcações</button></section>').join('');
+ content.querySelectorAll('[data-check]').forEach(el=>el.onchange=()=>{marks[el.dataset.check]=el.checked;persist('pamb:checks',marks)});
+ content.querySelectorAll('[data-clear]').forEach(el=>el.onclick=()=>{if(!confirm('Limpar as marcações deste checklist?'))return;Object.keys(marks).filter(k=>k.startsWith(el.dataset.clear+'-')).forEach(k=>delete marks[k]);persist('pamb:checks',marks);renderChecklists()});
+}
+function renderTools(){
+ currentView='tools';
+ content.innerHTML=`<h2 class="section-title">🧮 Ferramentas</h2>
+ <section class="tool"><h3>APP – curso d'água natural</h3><p class="small">Referência geral do art. 4º da Lei 12.651/2012. Para cursos naturais perenes e intermitentes, excluídos os efêmeros. Regras urbanas e áreas consolidadas exigem análise própria. <a href="https://www.planalto.gov.br/ccivil_03/_ato2011-2014/2012/lei/l12651.htm" target="_blank" rel="noopener">Consultar art. 4º</a>.</p>
+ <label>Largura do curso d'água (m)</label><input id="river" type="number" min="0" step="0.1"><button onclick="calcAPP()">Calcular faixa mínima</button><div id="appOut" class="output">Informe a largura.</div></section>
+ <section class="tool"><h3>Área retangular</h3><label>Comprimento (m)</label><input id="len" type="number" step="0.01"><label>Largura (m)</label><input id="wid" type="number" step="0.01"><button onclick="calcArea()">Calcular</button><div id="areaOut" class="output"></div></section>
+ <section class="tool"><h3>Converter coordenada DMS → decimal</h3><p class="small">Use valores positivos e escolha o hemisfério.</p>
+ <label>Graus</label><input id="deg" type="number"><label>Minutos</label><input id="min" type="number"><label>Segundos</label><input id="sec" type="number" step="0.001"><label>Hemisfério</label><select id="hem"><option>N</option><option>S</option><option>E</option><option>W</option></select><button onclick="calcCoord()">Converter</button><div id="coordOut" class="output"></div></section>`;
+}
+function numeric(id){const raw=$(id).value.trim();return raw===''?NaN:Number(raw)}
+function calcAPP(){
+ const w=numeric('#river');let message;
+ if(!Number.isFinite(w)||w<=0)message='Informe uma largura maior que zero.';
+ else if(w===50||w===200)message='Valor no limite entre faixas descritas na norma. Confira a aplicação do art. 4º, I, com a orientação técnica competente.';
+ else{const f=w<10?30:w<50?50:w<200?100:w<=600?200:500;message='Faixa geral de referência: '+f+' m em cada margem. Consulte as exceções e a incidência no caso concreto.'}
+ $('#appOut').textContent=message;
+}
+function calcArea(){const l=numeric('#len'),w=numeric('#wid'),area=l*w;$('#areaOut').textContent=Number.isFinite(area)&&l>0&&w>0?area.toFixed(2)+' m² • '+(area/10000).toFixed(4)+' ha':'Informe comprimento e largura maiores que zero.'}
+function calcCoord(){const d=numeric('#deg'),m=numeric('#min'),s=numeric('#sec'),h=$('#hem').value,max=['N','S'].includes(h)?90:180;const valid=[d,m,s].every(Number.isFinite)&&Number.isInteger(d)&&Number.isInteger(m)&&d>=0&&d<=max&&m>=0&&m<60&&s>=0&&s<60&&(d<max||(m===0&&s===0));$('#coordOut').textContent=valid?((d+m/60+s/3600)*(['S','W'].includes(h)?-1:1)).toFixed(7):'Confira graus, minutos (0–59), segundos (0–59,999) e hemisfério.'}
+function renderBopamb(){
+ currentView='bopamb';
+ const fields=[['data','Data'],['hora','Hora'],['municipio','Município'],['local','Local'],['coordenadas','Coordenadas'],['fato','Fato constatado'],['responsavel','Responsável/autuado'],['documentos','Documentos apresentados'],['medicoes','Medições/quantificações'],['providencias','Providências adotadas']];
+ content.innerHTML=`<h2 class="section-title">📝 Gerador de texto-base para BOPAmb</h2><section class="tool"><p class="small">Não substitui os campos e padrões obrigatórios do sistema institucional. Revise antes de utilizar. Os dados deste formulário não são enviados nem salvos; copie o texto antes de trocar de tela.</p>${fields.map(([id,l])=>`<label>${l}</label><textarea id="b_${id}" rows="2"></textarea>`).join('')}<button onclick="genBop()">Gerar texto-base</button><div id="bopOut" class="output"></div><button onclick="copyOutput('bopOut')">Copiar texto</button></section>`;
+}
+function genBop(){
+ const v=id=>$('#b_'+id).value.trim();
+ let t=`Na data de ${v('data')||'[DATA]'}, às ${v('hora')||'[HORA]'}, no município de ${v('municipio')||'[MUNICÍPIO]'}, a equipe realizou fiscalização ambiental em ${v('local')||'[LOCAL]'}, coordenadas ${v('coordenadas')||'[COORDENADAS]'}. `;
+ t+=`Durante a vistoria, constatou-se: ${v('fato')||'[DESCREVER OBJETIVAMENTE O FATO]'}. `;
+ if(v('responsavel'))t+=`Foi identificado como responsável: ${v('responsavel')}. `;
+ if(v('documentos'))t+=`Quanto à documentação, foram apresentados/verificados: ${v('documentos')}. `;
+ if(v('medicoes'))t+=`Foram realizadas as seguintes medições/quantificações: ${v('medicoes')}. `;
+ if(v('providencias'))t+=`Diante dos fatos, foram adotadas as seguintes providências: ${v('providencias')}.`;
+ $('#bopOut').textContent=t;
+}
+boot();
+
+function renderNexo(){
+ currentView='nexo'; const n=DATA.nexo_causal;
+ content.innerHTML=`<h2 class="section-title">🔥 ${esc(n.title)}</h2><section class="tool"><p class="small">${esc(n.basis)}</p>
+ <label>Batalhão</label><select id="nx_bpm"><option>Não informado</option><option>1º BPAmb</option><option>2º BPAmb</option><option>3º BPAmb</option><option>4º BPAmb</option><option>5º BPAmb</option></select>
+ <label>Companhia</label><select id="nx_cia"><option>Não informado</option><option>1ª Cia</option><option>2ª Cia</option><option>3ª Cia</option><option>4ª Cia</option></select>
+ <label>Propriedade / Talhão</label><input id="nx_prop" placeholder="Ex.: Fazenda X - Talhão 10"><label>Data/hora fiscalização</label><input id="nx_data" type="datetime-local"><label>Registro</label><input id="nx_reg" placeholder="Ex.: 001/26"></section>
+ ${n.criteria.map((c,ci)=>`<section class="tool"><div class="meta">CRITÉRIO ${c.n}</div><h3>${esc(c.title)}</h3>${c.fields.map((f,fi)=>`<label>${esc(f[0])}</label><select data-nx="${ci}-${fi}">${f[1].map(o=>`<option>${esc(o)}</option>`).join('')}</select>`).join('')}</section>`).join('')}
+ <section class="tool"><h3>Relatório consolidado</h3><p class="small">Formulário parcial recuperado da V2. Critérios XII e XIV ainda não têm descrição completa. Não calcula pontuação nem recomenda autuação. Os campos não são salvos; copie o relatório antes de sair.</p><button onclick="genNexo()">Gerar relatório</button><div id="nxout" class="output"></div><button onclick="copyOutput('nxout')">Copiar texto</button></section>`;
+}
+function genNexo(){
+ let lines=['ESCOLA SUPERIOR DE POLÍCIA AMBIENTAL','RASCUNHO DE APOIO – NEXO CAUSAL (NÃO OFICIAL)','',`Batalhão: ${$('#nx_bpm').value}`,`Companhia: ${$('#nx_cia').value}`,`Propriedade/Talhão: ${$('#nx_prop').value||'Não informado'}`,`Data/Hora: ${$('#nx_data').value||'Não informado'}`,`Registro: ${$('#nx_reg').value||'Não informado'}`,'','CRITÉRIOS:'];
+ DATA.nexo_causal.criteria.forEach((c,ci)=>{let vals=c.fields.map((f,fi)=>`${f[0]}: ${document.querySelector(`[data-nx="${ci}-${fi}"]`).value}`).join(' | ');lines.push(`Critério ${c.n} – ${c.title}: ${vals}`)});
+ lines.push('','Observação: pontuação e parecer automático pendentes da parametrização oficial.');$('#nxout').textContent=lines.join('\n');
+}
+
+async function copyOutput(id){const text=$('#'+id).textContent;if(!text.trim()){status('Gere o texto antes de copiar.');return}try{await navigator.clipboard.writeText(text);status('Texto copiado.')}catch{const selection=window.getSelection(),range=document.createRange();range.selectNodeContents($('#'+id));selection.removeAllRanges();selection.addRange(range);status('Cópia automática indisponível. O texto foi selecionado para copiar manualmente.')}}
+function renderReference(type){
+ currentView='reference:'+type;
+ if(type==='ia'){content.innerHTML='<h2 class="section-title">💡 IA Ambiental</h2><section class="tool"><p>O menu consta na referência, mas a V2 não contém integração de inteligência artificial.</p><p>O gerador BOPAmb e o relatório de nexo causal usam os campos preenchidos por você.</p><button onclick="renderBopamb()">Abrir gerador BOPAmb</button><button onclick="renderNexo()">Abrir nexo causal</button></section>';return}
+ const items=allItems().filter(i=>(i.tags||[]).includes(type==='operacoes'?'operações':'anexos'));
+ content.innerHTML='<h2 class="section-title">'+(type==='operacoes'?'🚒 Operações':'📎 Anexos')+'</h2><p class="small">Relação recuperada da V2. Documentos não anexados estão pendentes de vinculação.</p>'+(type==='operacoes'?'<section class="tool"><h3>SP SEM FOGO 2026</h3><button onclick="renderNexo()">Abrir formulário de nexo causal</button></section>':'')+items.map(i=>resultHtml(i,{title:i.module,icon:i.icon})).join('');
+}

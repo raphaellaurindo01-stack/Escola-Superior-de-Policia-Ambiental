@@ -1,78 +1,60 @@
 # Escola Superior de Polícia Ambiental
 
-Primeira versão de uma aplicação web estática e PWA de estudo e apoio à organização pessoal do patrulheiro ambiental. Projeto educacional independente, sem vínculo institucional declarado, certificação ou emissão de documentos oficiais.
+Aplicação web estática baseada no **Aplicativo V2 fornecido pelo autor**, com apoio ao patrulheiro ambiental. Esta revisão substitui a primeira implementação genérica e conserva os 9 módulos, 45 conteúdos, checklists, ferramentas, gerador BOPAmb e formulário parcial de nexo causal da V2.
 
-## O que funciona
+## Usar
 
-- Quatro guias introdutórios: fauna, vegetação, água e resíduos, qualidade do registro.
-- Busca de conteúdo sem depender de internet.
-- Quatro trilhas com leitura, exercício e progresso salvo no navegador.
-- Checklist pessoal com marcações persistentes e reinício com confirmação.
-- Caderno com salvamento automático local, exportação em `.txt` e exclusão com confirmação.
-- Biblioteca de links oficiais e interface adaptada a celulares.
-- Acesso offline aos recursos internos após o primeiro carregamento completo; instalação como PWA nos navegadores compatíveis.
+Abra o site e selecione uma área ou pesquise um termo. Marque conteúdos como favoritos. O botão **Ler documento** abre a fonte oficial em um painel dentro da interface; quando há uma única referência identificada sem ressalvas, o próprio título abre o leitor.
 
-Não há contas, servidor, analytics, cookies de rastreamento, banco de dados ou serviços pagos. O armazenamento usa `localStorage` no navegador. Não inserir dados pessoais, sigilosos ou de ocorrências reais. Não há sincronização ou backup remoto; exporte suas notas. A hospedagem pode manter seus próprios registros de acesso.
+Sites oficiais podem bloquear a exibição em outros sites ou exigir download do PDF. O painel mantém a opção **Abrir no site oficial**. Não são usados serviços de terceiros para contornar essas restrições.
 
-## Publicação gratuita com GitHub Pages
+Favoritos e marcações dos checklists ficam neste navegador. Os dados preenchidos em BOPAmb e nexo causal não são enviados nem salvos: copie o resultado antes de mudar de tela. Não há login, servidor, banco de dados ou integração de IA.
 
-O repositório é público e o conteúdo publicável está exclusivamente em `docs/`. Não há etapa de compilação.
+## Documentos
 
-1. Abra **Settings → Pages** neste repositório.
-2. Em **Build and deployment**, selecione **Deploy from a branch**.
-3. Escolha **main** e a pasta **/docs**; clique em **Save**.
-4. Aguarde o GitHub concluir a publicação e use o endereço exibido nessa tela.
+Dos 30 títulos recuperados da referência, 14 têm fontes oficiais vinculadas; dois destes precisam de confirmação do ano da IN IBAMA 10. Os demais aguardam arquivos. Veja [fontes e observações](FONTES-OFICIAIS.md) e [documentos a enviar ou confirmar](DOCUMENTOS-PENDENTES.md).
 
-Endereço esperado após a ativação (não significa que já esteja publicado):
-https://raphaellaurindo01-stack.github.io/Escola-Superior-de-Policia-Ambiental/
+Os títulos abreviados originais foram preservados. A consulta às fontes não equivale a uma revisão jurídica integral: alguns textos possuem alterações posteriores, indicadas quando identificadas. A SEMIL 27/2025 trata de período de 2025; o leitor também oferece a página oficial da operação de 2026.
 
-O GitHub Pages está disponível gratuitamente para repositórios públicos no GitHub Free. Consulte as [instruções oficiais](https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site). Essa configuração se aplica somente a este repositório.
+O formulário de nexo causal continua parcial, sem pontuação automática ou recomendação de autuação. O menu IA Ambiental identifica a ausência de integração na V2 e dá acesso aos geradores existentes. O vídeo e a identidade visual oficial não vieram no pacote; não se afirma reprodução visual exata do aplicativo de referência. O [README original](README-ORIGINAL-V2.md) foi preservado como histórico.
 
-## Usar e instalar
+## Publicar gratuitamente no GitHub Pages
 
-Abra a página publicada. Navegue pelas seções do menu. Em Trilhas de estudo, leia o guia e acerte o exercício para concluir a trilha. No caderno, digite suas notas e use **Exportar notas (.txt)** para guardar uma cópia.
+1. Neste repositório, abra **Settings → Pages**.
+2. Em **Build and deployment**, escolha **Deploy from a branch**.
+3. Selecione **main** e a pasta **/docs** e salve.
+4. Aguarde o GitHub concluir a publicação. O endereço previsto é https://raphaellaurindo01-stack.github.io/Escola-Superior-de-Policia-Ambiental/.
 
-Aguarde **Conteúdo disponível offline** antes de desconectar. Essa mensagem confirma que os recursos internos foram armazenados; os links de legislação precisam de internet. Se o navegador remover dados do site, acesse online novamente. No Chrome/Edge compatível, use **Instalar aplicativo** quando oferecido; no Safari móvel, **Compartilhar → Adicionar à Tela de Início**. HTTPS ou localhost é necessário para o service worker. A interface pode abrir por arquivo, mas essa forma não oferece offline/PWA.
+O projeto não precisa de compilação nem de serviço pago. Publicações futuras usam os arquivos de `docs/`. Alternativamente, publique essa pasta em qualquer hospedagem estática com HTTPS.
 
-## Executar localmente
+## Executar no computador
 
-Com Node.js 18 ou superior, sem instalar dependências:
+Com Node.js instalado, na pasta do projeto execute:
 
 ```sh
 node scripts/serve.cjs
 ```
 
-Abra http://localhost:4173/Escola-Superior-de-Policia-Ambiental/ . Encerre com Ctrl+C. O servidor local serve apenas `docs/` e simula o caminho do GitHub Pages.
+Abra http://localhost:4173/Escola-Superior-de-Policia-Ambiental/. Não abra `index.html` diretamente: o carregamento dos dados e o acesso offline precisam de um servidor HTTP.
 
-## Estrutura e manutenção
-
-```text
-docs/index.html           Estrutura da aplicação
-docs/styles.css           Layout responsivo
-docs/app.js               Conteúdo, navegação e ferramentas locais
-docs/sw.js                Cache offline versionado
-docs/manifest.webmanifest Instalação da PWA
-docs/icon*                Ícones próprios com monograma EA
-scripts/serve.cjs         Servidor local sem dependências
-scripts/check.cjs         Verificação automatizada
-```
-
-Edite os guias e exercícios em `guides`, as fontes em `sources` e o checklist em `checks`, dentro de `docs/app.js`. Mantenha os IDs estáveis para preservar o progresso. Revise conteúdo com profissionais habilitados antes de ampliar seu uso institucional. Não há cálculo de multas, classificação jurídica automática ou protocolo operacional oficial.
-
-Ao alterar qualquer arquivo público, incremente `CACHE` em `docs/sw.js` (ex.: `espa-v1.0.1`). O aplicativo usa uma versão coerente em cache e prepara a nova em segundo plano. Feche todas as abas/janelas do aplicativo e abra novamente para ativar a atualização; não é necessário apagar as notas. Não renomeie o prefixo `espa:v1:` sem planejar migração do armazenamento.
-
-## Verificação
+Para verificar a estrutura e as principais funções:
 
 ```sh
 node scripts/check.cjs
 ```
 
-Verifica sintaxe, recursos offline, caminhos da PWA, arquivos de ícones, conteúdo dos exercícios e isolamento do cache. Para homologar no dispositivo, confira busca com e sem acentos, conclusão e recarga das trilhas, persistência do checklist, exportação de notas, recusa à confirmação de exclusão e reabertura offline após o carregamento completo. Teste instalação e atualização no navegador de destino. As verificações automatizadas não substituem esse teste de navegador.
+## Acesso offline e atualização
 
-## Fontes
+Depois do primeiro acesso completo, o navegador guarda a interface e o conteúdo interno. Documentos hospedados nos órgãos oficiais precisam de internet e não são copiados para o cache do aplicativo. A disponibilidade da instalação depende do navegador; o pacote original não forneceu ícones próprios de instalação.
 
-- [Lei nº 9.605/1998](https://www.planalto.gov.br/ccivil_03/leis/l9605.htm)
-- [Decreto nº 6.514/2008](https://www.planalto.gov.br/ccivil_03/_ato2007-2010/2008/decreto/d6514.htm)
-- [Lei nº 12.651/2012](https://www.planalto.gov.br/ccivil_03/_ato2011-2014/2012/lei/l12651.htm)
+Após uma atualização, feche todas as abas do aplicativo e abra novamente. Ao editar arquivos futuramente, altere a versão do cache em `docs/sw.js` para atualizar o conteúdo offline.
 
-Referências selecionadas em 09/09/2026. A aplicação aponta para textos oficiais online, sem copiar ou congelar seus dispositivos. Confira alterações e normas estaduais e locais. Os guias são exercícios gerais de observação e organização, não orientação jurídica. O contexto recuperado da conversa anterior continha o conceito e o nome do projeto, mas não continha arquivos ou currículo anterior; esta versão foi construída a partir desse conceito.
+## Editar o conteúdo
+
+- `docs/data/content.json`: módulos, roteiros, referências e endereços oficiais.
+- `docs/app.js`: navegação e ferramentas.
+- `docs/reader.js`: leitor interno de documentos.
+- `docs/styles.css`: aparência da V2 e ajustes do leitor.
+- `docs/sw.js`: cache offline somente dos arquivos internos.
+
+Acrescente fontes em `documents` com título e URL HTTPS oficial. Atualize também os registros de fontes e pendências. Não inclua dados de ocorrências reais ou credenciais nos arquivos públicos.
