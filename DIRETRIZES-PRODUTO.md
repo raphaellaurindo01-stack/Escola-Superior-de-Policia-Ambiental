@@ -33,8 +33,8 @@
   6. base normativa e fontes oficiais.
 - A ferramenta é apoio à decisão e não deve preencher lacunas factuais por inferência.
 
-## Ferramenta 4º Fogo / CFA
-- Converter a planilha de pontuação em ferramenta interativa.
+## Ferramenta Corta-Fogo / CFA
+- Converter a planilha de pontuação **Corta-Fogo**, da CFA, em ferramenta interativa.
 - O usuário seleciona/marca os critérios e o aplicativo calcula a pontuação e apresenta o resultado.
 - Regras, pesos, limites e conclusões devem reproduzir fielmente o documento oficial.
 - Se o material disponível não trouxer todas as regras, solicitar o PDF ao responsável antes de programar a lógica definitiva.
