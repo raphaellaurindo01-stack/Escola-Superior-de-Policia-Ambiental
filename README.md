@@ -76,4 +76,3 @@ Verifica sintaxe, recursos offline, caminhos da PWA, arquivos de ícones, conte�
 - [Lei nº 12.651/2012](https://www.planalto.gov.br/ccivil_03/_ato2011-2014/2012/lei/l12651.htm)
 
 Referências selecionadas em 09/09/2026. A aplicação aponta para textos oficiais online, sem copiar ou congelar seus dispositivos. Confira alterações e normas estaduais e locais. Os guias são exercícios gerais de observação e organização, não orientação jurídica. O contexto recuperado da conversa anterior continha o conceito e o nome do projeto, mas não continha arquivos ou currículo anterior; esta versão foi construída a partir desse conceito.
-

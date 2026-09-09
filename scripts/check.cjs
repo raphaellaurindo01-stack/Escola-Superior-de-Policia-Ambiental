@@ -1,0 +1,26 @@
+const assert=require('node:assert/strict');
+const fs=require('node:fs');
+const path=require('node:path');
+const vm=require('node:vm');
+const root=path.resolve(__dirname,'../docs');
+const read=f=>fs.readFileSync(path.join(root,f),'utf8');
+for(const file of ['app.js','sw.js'])new vm.Script(read(file),{filename:file});
+const manifest=JSON.parse(read('manifest.webmanifest'));
+assert.equal(manifest.start_url,'./');assert.equal(manifest.scope,'./');
+for(const icon of manifest.icons){const bytes=fs.readFileSync(path.join(root,icon.src));assert.equal(bytes.toString('hex',0,8),'89504e470d0a1a0a');const size=Number(icon.sizes.split('x')[0]);assert.equal(bytes.readUInt32BE(16),size);assert.equal(bytes.readUInt32BE(20),size)}
+const html=read('index.html');for(const match of html.matchAll(/(?:src|href)="\.\/([^"#]+)"/g))assert.ok(fs.existsSync(path.join(root,match[1])),match[1]);
+const storage=new Map();let unavailable=false;
+const context=vm.createContext({document:{querySelector:()=>({textContent:''})},localStorage:{getItem:k=>{if(unavailable)throw Error();return storage.get(k)??null},setItem:(k,v)=>{if(unavailable)throw Error();storage.set(k,v)}}});
+vm.runInContext(read('app.js').split("window.addEventListener('hashchange'")[0],context);
+assert.equal(vm.runInContext('guides.length',context),4);
+assert.equal(vm.runInContext('guides.every(g=>g.options.length===3 && g.answer>=0 && g.answer<3 && g.steps.length>0)',context),true);
+vm.runInContext("save('completed',['fauna','unknown']);save('checks',[0,99,-1,'1']);save('notes',{title:'Teste',body:'Vegetação e água'})",context);
+assert.equal(vm.runInContext('completed().join()',context),'fauna');assert.equal(vm.runInContext('checked().join()',context),'0');assert.equal(vm.runInContext("read('notes',{}).body",context),'Vegetação e água');
+assert.ok([...storage.keys()].every(k=>k.startsWith('espa:v1:')));
+storage.set('espa:v1:completed','null');assert.equal(vm.runInContext('completed().length',context),0);
+storage.set('espa:v1:checks','broken');assert.equal(vm.runInContext('checked().length',context),1);
+unavailable=true;assert.equal(vm.runInContext("save('notes',{body:'fallback'})",context),false);assert.equal(vm.runInContext("read('notes',{}).body",context),'fallback');
+const events={};const deleted=[];let resources=[];const cache={addAll:async assets=>{resources=assets;for(const asset of assets)assert.ok(fs.existsSync(path.join(root,asset==='./'?'index.html':asset)))},match:async key=>key==='./index.html'?'offline document':null};
+const sw=vm.createContext({URL,Promise,self:{location:{origin:'https://example.test'},registration:{scope:'https://example.test/Escola-Superior-de-Policia-Ambiental/'},clients:{claim:async()=>{}},addEventListener:(name,fn)=>events[name]=fn},caches:{open:async()=>cache,keys:async()=>['another-app','espa-old','espa-v1.0.0'],delete:async key=>deleted.push(key)},fetch:async()=>{throw Error('Network is offline')}});
+vm.runInContext(read('sw.js'),sw);
+(async()=>{let wait;events.install({waitUntil:p=>wait=p});await wait;assert.equal(resources.length,8);events.activate({waitUntil:p=>wait=p});await wait;assert.deepEqual(deleted,['espa-old']);let response;events.fetch({request:{method:'GET',url:'https://example.test/Escola-Superior-de-Policia-Ambiental/',mode:'navigate'},respondWith:p=>response=p});assert.equal(await response,'offline document');let intercepted=false;events.fetch({request:{method:'GET',url:'https://www.planalto.gov.br/test'},respondWith:()=>intercepted=true});assert.equal(intercepted,false);console.log('PASS: syntax, assets, PWA icons, exercises, storage fallback, scoped cache and offline navigation.')})().catch(e=>{console.error(e);process.exitCode=1});
