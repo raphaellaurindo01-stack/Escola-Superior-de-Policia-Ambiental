@@ -11,22 +11,26 @@
 <body>
 <header class="topbar">
   <div>
-    <div class="eyebrow">Apoio ao Patrulheiro Ambiental • V2</div>
+    <div class="eyebrow">ESPA • CONSULTA E APOIO OPERACIONAL</div>
     <h1>Escola Superior de Polícia Ambiental</h1>
-    <p>Consulta rápida, procedimentos, checklists e ferramentas.</p>
+    <p>Legislação, procedimentos, consulta ambiental e ferramentas de campo.</p>
   </div>
   <button id="installBtn" class="ghost" hidden>Instalar</button>
 </header>
 
 <main>
   <section class="hero">
-    <label class="sr-only" for="search">Pesquisar conteúdo</label><input id="search" type="search" placeholder="🔎 Pesquisar: APP, fauna, DOF, poluição..." autocomplete="off">
+    <label class="sr-only" for="search">Pesquisar conteúdo</label><input id="search" type="search" placeholder="🔎 Pesquisar: APP, fauna, pesca, flora, poluição..." autocomplete="off">
     <div class="quick">
       <button data-view="home">🏠 Início</button>
+      <button data-view="assistant">🧭 Ocorrência</button>
+      <button data-view="environmental-ai">💡 Consulta Ambiental</button>
+      <button data-view="resenha">🗒️ Resenha</button>
       <button data-view="favorites">⭐ Favoritos</button>
       <button data-view="checklists">✅ Checklists</button>
       <button data-view="tools">🧮 Ferramentas</button>
-      <button data-view="bopamb">📝 BOPAmb</button><button data-view="nexo">🔥 Nexo causal</button>
+      <button data-view="bopamb">📝 BOPAmb</button>
+      <button data-view="nexo">🔥 Nexo causal</button>
     </div>
   </section>
   <p id="appStatus" role="status" class="small">Carregando conteúdo…</p><section id="content" aria-label="Conteúdo"></section>
@@ -35,9 +39,9 @@
 <nav class="bottom">
   <button data-view="home">🏠<span>Início</span></button>
   <button data-view="search">🔎<span>Buscar</span></button>
-  <button data-view="checklists">✅<span>Checklist</span></button>
+  <button data-view="assistant">🧭<span>Ocorrência</span></button>
+  <button data-view="environmental-ai">💡<span>Consulta</span></button>
   <button data-view="tools">🧮<span>Ferramentas</span></button>
-  <button data-view="favorites">⭐<span>Favoritos</span></button>
 </nav>
 
 <dialog id="itemDialog" aria-label="Detalhes do conteúdo">
@@ -45,6 +49,7 @@
   <div id="dialogBody"></div>
 </dialog>
 
-<noscript>Ative o JavaScript para acessar o conteúdo e as ferramentas.</noscript><script src="reader.js"></script><script src="app.js"></script>
+<noscript>Ative o JavaScript para acessar o conteúdo e as ferramentas.</noscript>
+<script src="reader.js"></script><script src="app.js"></script><script src="assistants.js"></script><script src="router-patch.js"></script>
 </body>
 </html>
