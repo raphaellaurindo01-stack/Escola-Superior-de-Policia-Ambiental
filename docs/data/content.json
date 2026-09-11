@@ -1047,6 +1047,219 @@
           "document_status": "pendente"
         }
       ]
+    },
+    {
+      "id": "reurb",
+      "title": "REURB e Intervenções Ambientais",
+      "icon": "🏘️",
+      "description": "Procedimento, estudos, autorização e responsabilidade técnica.",
+      "items": [
+        {
+          "title": "REURB: procedimento, CRF e registro",
+          "summary": "Regularização fundiária exige análise do procedimento e do projeto. Protocolo não comprova aprovação.",
+          "steps": [
+            "Identificar modalidade Reurb-S ou Reurb-E e requerente legitimado.",
+            "Conferir processamento, notificações, projeto, saneamento e decisão pública.",
+            "Solicitar CRF, projeto aprovado e registro imobiliário.",
+            "Distinguir requerimento do Ministério Público de aprovação administrativa municipal."
+          ],
+          "legal": [
+            "Lei 13.465/2017, arts. 9º, 13, 14, 28 e 30"
+          ],
+          "documents": [
+            {
+              "title": "Lei 13.465/2017",
+              "url": "https://www.planalto.gov.br/ccivil_03/_ato2015-2018/2017/lei/l13465.htm",
+              "checked": "2026-09-11",
+              "note": "Conferir alterações e aplicação ao objeto concreto."
+            },
+            {
+              "title": "Decreto 9.310/2018",
+              "url": "https://www.planalto.gov.br/ccivil_03/_ato2015-2018/2018/decreto/d9310.htm",
+              "checked": null,
+              "note": "Conferir alterações e aplicação ao objeto concreto."
+            }
+          ],
+          "tags": [
+            "reurb",
+            "crf",
+            "regularização",
+            "protocolo"
+          ]
+        },
+        {
+          "title": "REURB em APP, UC e mananciais",
+          "summary": "Regularização não é licença geral para novas intervenções. Compare perímetro, projeto e situação em campo.",
+          "steps": [
+            "Conferir estudo ambiental e componentes pertinentes dos arts. 64 ou 65 do Código Florestal.",
+            "Verificar capacidade do órgão ambiental municipal e atribuições dos profissionais; se ausente, analisar aprovação estadual.",
+            "Distinguir intervenção antiga contemplada no projeto de nova supressão, ampliação ou terraplenagem.",
+            "Verificar autorização específica, prazo e condicionantes da intervenção atual.",
+            "Não presumir extinção de passivos administrativos, civis ou penais."
+          ],
+          "legal": [
+            "Lei 13.465/2017, arts. 11 e 12; Lei 12.651/2012, arts. 64 e 65"
+          ],
+          "documents": [
+            {
+              "title": "Lei 13.465/2017",
+              "url": "https://www.planalto.gov.br/ccivil_03/_ato2015-2018/2017/lei/l13465.htm",
+              "checked": "2026-09-11",
+              "note": "Conferir alterações e aplicação ao objeto concreto."
+            },
+            {
+              "title": "Decreto 9.310/2018",
+              "url": "https://www.planalto.gov.br/ccivil_03/_ato2015-2018/2018/decreto/d9310.htm",
+              "checked": null,
+              "note": "Conferir alterações e aplicação ao objeto concreto."
+            }
+          ],
+          "tags": [
+            "reurb",
+            "app",
+            "uc",
+            "manancial",
+            "prefeitura"
+          ]
+        },
+        {
+          "title": "Legitimação fundiária e o marco de 22/12/2016",
+          "summary": "O marco temporal está associado à legitimação fundiária; não aplicar proibição genérica de Reurb.",
+          "steps": [
+            "Identificar data de formação do núcleo e provas disponíveis.",
+            "Identificar o instrumento de titulação efetivamente invocado.",
+            "Analisar o marco temporal para legitimação fundiária, sem estendê-lo automaticamente a todos os instrumentos."
+          ],
+          "legal": [
+            "Lei 13.465/2017, art. 9º, §2º, e art. 23"
+          ],
+          "documents": [
+            {
+              "title": "Lei 13.465/2017",
+              "url": "https://www.planalto.gov.br/ccivil_03/_ato2015-2018/2017/lei/l13465.htm",
+              "checked": "2026-09-11",
+              "note": "Conferir alterações e aplicação ao objeto concreto."
+            }
+          ],
+          "tags": [
+            "reurb",
+            "legitimação",
+            "2016"
+          ]
+        },
+        {
+          "title": "Cidade Legal e responsabilidade municipal",
+          "summary": "Cidade Legal presta apoio aos municípios. Participação no programa não substitui aprovação nem autorização de intervenção.",
+          "steps": [
+            "Conferir cooperação, atos municipais, projeto e CRF.",
+            "Verificar anuências cabíveis e registro.",
+            "Conferir autorização para a intervenção atual independentemente do nome do programa."
+          ],
+          "legal": [
+            "Decreto SP 52.052/2007"
+          ],
+          "documents": [
+            {
+              "title": "Decreto SP 52.052/2007 — Cidade Legal",
+              "url": "https://www.al.sp.gov.br/repositorio/legislacao/decreto/2007/decreto-52052-13.08.2007.html",
+              "checked": "2026-09-11",
+              "note": "Conferir alterações e aplicação ao objeto concreto."
+            },
+            {
+              "title": "Lei 13.465/2017",
+              "url": "https://www.planalto.gov.br/ccivil_03/_ato2015-2018/2017/lei/l13465.htm",
+              "checked": "2026-09-11",
+              "note": "Conferir alterações e aplicação ao objeto concreto."
+            }
+          ],
+          "tags": [
+            "cidade legal",
+            "reurb",
+            "município"
+          ]
+        },
+        {
+          "title": "Responsável técnico e autoridade administrativa",
+          "summary": "A assinatura administrativa e a responsabilidade pelo estudo devem ser verificadas separadamente.",
+          "steps": [
+            "Conferir competência e delegação da autoridade que expediu o ato.",
+            "Identificar o profissional responsável pelo estudo, conselho e registro.",
+            "Verificar atribuição individual e ART/RRT/TRT ou equivalente compatível com o objeto.",
+            "Não validar ou rejeitar apenas pelo título profissional.",
+            "Em estudo multidisciplinar, conferir todos os componentes e responsáveis."
+          ],
+          "legal": [
+            "Lei 13.465/2017, art. 12, §§1º e 2º; normas profissionais pertinentes"
+          ],
+          "documents": [
+            {
+              "title": "Lei 13.465/2017",
+              "url": "https://www.planalto.gov.br/ccivil_03/_ato2015-2018/2017/lei/l13465.htm",
+              "checked": "2026-09-11",
+              "note": "Conferir alterações e aplicação ao objeto concreto."
+            },
+            {
+              "title": "Resolução CFBio 480/2018",
+              "url": "https://cfbio.gov.br/2018/08/30/resolucao-n-480-de-10-de-agosto-de-2018/",
+              "checked": "2026-09-11",
+              "note": "Conferir alterações e aplicação ao objeto concreto."
+            },
+            {
+              "title": "Resolução Confea 218/1973",
+              "url": "https://normativos.confea.org.br/Ementas/Visualizar?id=266",
+              "checked": "2026-09-11",
+              "note": "Conferir alterações e aplicação ao objeto concreto."
+            },
+            {
+              "title": "Resolução Confea 1.073/2016",
+              "url": "https://normativos.confea.org.br/Ementas/Visualizar?id=59111",
+              "checked": "2026-09-11",
+              "note": "Conferir alterações e aplicação ao objeto concreto."
+            },
+            {
+              "title": "Lei 12.378/2010 — Arquitetura e Urbanismo",
+              "url": "https://www.planalto.gov.br/ccivil_03/_ato2007-2010/2010/lei/l12378.htm",
+              "checked": null,
+              "note": "Conferir alterações e aplicação ao objeto concreto."
+            }
+          ],
+          "tags": [
+            "responsável técnico",
+            "art",
+            "rrt",
+            "trt",
+            "inventário",
+            "prad",
+            "laudo"
+          ]
+        },
+        {
+          "title": "Jurisprudência da REURB: conferir atualização",
+          "summary": "O estado atual da ADI 5.771 não foi confirmado. Voto isolado não deve ser apresentado como tese consolidada.",
+          "steps": [
+            "Consultar andamento, decisões, ata, publicação e eventual modulação.",
+            "Registrar data e documento efetivamente consultados.",
+            "Enquanto faltarem esses elementos, não afirmar mudança vinculante da regra."
+          ],
+          "legal": [
+            "ADI 5.771 — conferir documentos oficiais"
+          ],
+          "documents": [
+            {
+              "title": "ADI 5.771 — andamento no STF",
+              "url": "https://portal.stf.jus.br/processos/detalhe.asp?incidente=5255150",
+              "checked": null,
+              "note": "Andamento não confirmado. Consultar decisão, ata e publicação; não inferir tese vigente."
+            }
+          ],
+          "tags": [
+            "reurb",
+            "stf",
+            "adi",
+            "jurisprudência"
+          ]
+        }
+      ]
     }
   ],
   "checklists": [
@@ -1354,5 +1567,293 @@
       "Planilha de Nexo Causal - Excel",
       "Inserção de Resultados - ALGAE - IV"
     ]
-  }
+  },
+  "espa_sources": {
+    "reurb": {
+      "title": "Lei 13.465/2017",
+      "url": "https://www.planalto.gov.br/ccivil_03/_ato2015-2018/2017/lei/l13465.htm",
+      "checked": "2026-09-11",
+      "note": "Conferir alterações e aplicação ao objeto concreto."
+    },
+    "decreto": {
+      "title": "Decreto 9.310/2018",
+      "url": "https://www.planalto.gov.br/ccivil_03/_ato2015-2018/2018/decreto/d9310.htm",
+      "checked": null,
+      "note": "Conferir alterações e aplicação ao objeto concreto."
+    },
+    "cidade": {
+      "title": "Decreto SP 52.052/2007 — Cidade Legal",
+      "url": "https://www.al.sp.gov.br/repositorio/legislacao/decreto/2007/decreto-52052-13.08.2007.html",
+      "checked": "2026-09-11",
+      "note": "Conferir alterações e aplicação ao objeto concreto."
+    },
+    "stf": {
+      "title": "ADI 5.771 — andamento no STF",
+      "url": "https://portal.stf.jus.br/processos/detalhe.asp?incidente=5255150",
+      "checked": null,
+      "note": "Andamento não confirmado. Consultar decisão, ata e publicação; não inferir tese vigente."
+    },
+    "bio": {
+      "title": "Resolução CFBio 480/2018",
+      "url": "https://cfbio.gov.br/2018/08/30/resolucao-n-480-de-10-de-agosto-de-2018/",
+      "checked": "2026-09-11",
+      "note": "Conferir alterações e aplicação ao objeto concreto."
+    },
+    "crea": {
+      "title": "Resolução Confea 218/1973",
+      "url": "https://normativos.confea.org.br/Ementas/Visualizar?id=266",
+      "checked": "2026-09-11",
+      "note": "Conferir alterações e aplicação ao objeto concreto."
+    },
+    "atribuicao": {
+      "title": "Resolução Confea 1.073/2016",
+      "url": "https://normativos.confea.org.br/Ementas/Visualizar?id=59111",
+      "checked": "2026-09-11",
+      "note": "Conferir alterações e aplicação ao objeto concreto."
+    },
+    "silvicultura": {
+      "title": "Decisão Normativa Confea 73/2003 — Silvicultura",
+      "url": "https://normativos.confea.org.br/Ementas/Visualizar?id=627",
+      "checked": "2026-09-11",
+      "note": "Conferir alterações e aplicação ao objeto concreto."
+    },
+    "cau": {
+      "title": "Lei 12.378/2010 — Arquitetura e Urbanismo",
+      "url": "https://www.planalto.gov.br/ccivil_03/_ato2007-2010/2010/lei/l12378.htm",
+      "checked": "2026-09-11",
+      "note": "Conferir alterações e aplicação ao objeto concreto."
+    }
+  },
+  "technical_matrix": [
+    {
+      "object": "Inventário florestal",
+      "professions": "Engenheiro Florestal; Biólogo habilitado; Agrônomo com atribuição correspondente",
+      "council": "CRBio/CREA",
+      "responsibility": "ART ou responsabilidade equivalente",
+      "attribution": "Consultar certidão/registro individual e escopo do serviço. Lista exemplificativa, não exclusiva.",
+      "sources": [
+        "bio",
+        "crea",
+        "atribuicao"
+      ]
+    },
+    {
+      "object": "Levantamento florístico",
+      "professions": "Engenheiro Florestal; Biólogo; Agrônomo conforme atribuição",
+      "council": "CRBio/CREA",
+      "responsibility": "Responsabilidade pelo levantamento",
+      "attribution": "Consultar certidão/registro individual e escopo do serviço. Lista exemplificativa, não exclusiva.",
+      "sources": [
+        "bio",
+        "crea",
+        "atribuicao"
+      ]
+    },
+    {
+      "object": "Manejo e conservação de vegetação e flora",
+      "professions": "Biólogo; Engenheiro Florestal; Agrônomo conforme atribuição",
+      "council": "CRBio/CREA",
+      "responsibility": "Responsabilidade pelo objeto exato",
+      "attribution": "Consultar certidão/registro individual e escopo do serviço. Lista exemplificativa, não exclusiva.",
+      "sources": [
+        "bio",
+        "crea",
+        "silvicultura",
+        "atribuicao"
+      ]
+    },
+    {
+      "object": "Estudo de supressão de vegetação",
+      "professions": "Biólogo; Engenheiro Florestal; Agrônomo conforme atribuição",
+      "council": "CRBio/CREA",
+      "responsibility": "Responsabilidade pelo estudo; não é a autorização",
+      "attribution": "Consultar certidão/registro individual e escopo do serviço. Lista exemplificativa, não exclusiva.",
+      "sources": [
+        "bio",
+        "crea",
+        "atribuicao"
+      ]
+    },
+    {
+      "object": "PRAD",
+      "professions": "Equipe conforme componentes: flora, geotecnia, saneamento e outros",
+      "council": "Conselhos de cada componente",
+      "responsibility": "Responsabilidade de cada componente",
+      "attribution": "Consultar certidão/registro individual e escopo do serviço. Lista exemplificativa, não exclusiva.",
+      "sources": [
+        "bio",
+        "crea",
+        "atribuicao"
+      ]
+    },
+    {
+      "object": "PTRF",
+      "professions": "Biólogo; Engenheiro Florestal; Agrônomo conforme atribuição",
+      "council": "CRBio/CREA",
+      "responsibility": "Responsabilidade pelo projeto de flora",
+      "attribution": "Consultar certidão/registro individual e escopo do serviço. Lista exemplificativa, não exclusiva.",
+      "sources": [
+        "bio",
+        "crea",
+        "atribuicao"
+      ]
+    },
+    {
+      "object": "Fauna",
+      "professions": "Profissionais com atribuição específica para a atividade; matriz específica pendente",
+      "council": "Conselho competente",
+      "responsibility": "Responsabilidade e autorização quando exigíveis",
+      "attribution": "Consultar certidão/registro individual e escopo do serviço. Lista exemplificativa, não exclusiva.",
+      "sources": [
+        "atribuicao"
+      ]
+    },
+    {
+      "object": "Risco geológico/geotécnico",
+      "professions": "Geólogo, Engenheiro Geólogo, Civil e outros conforme atribuição registrada",
+      "council": "CREA",
+      "responsibility": "ART e atribuições compatíveis",
+      "attribution": "Consultar certidão/registro individual e escopo do serviço. Lista exemplificativa, não exclusiva.",
+      "sources": [
+        "crea",
+        "atribuicao"
+      ]
+    },
+    {
+      "object": "Drenagem, saneamento e infraestrutura",
+      "professions": "Engenheiros de modalidades pertinentes conforme componente",
+      "council": "CREA",
+      "responsibility": "ART por componente",
+      "attribution": "Consultar certidão/registro individual e escopo do serviço. Lista exemplificativa, não exclusiva.",
+      "sources": [
+        "crea",
+        "atribuicao"
+      ]
+    },
+    {
+      "object": "Topografia/georreferenciamento",
+      "professions": "Profissional com atribuição para o serviço específico; não presume atribuição em flora",
+      "council": "Conselho competente",
+      "responsibility": "ART/RRT/TRT conforme categoria; regra de técnicos pendente",
+      "attribution": "Consultar certidão/registro individual e escopo do serviço. Lista exemplificativa, não exclusiva.",
+      "sources": [
+        "crea",
+        "atribuicao",
+        "cau"
+      ]
+    },
+    {
+      "object": "Projeto urbanístico",
+      "professions": "Arquiteto e Urbanista; engenheiros conforme atribuição",
+      "council": "CAU/CREA",
+      "responsibility": "RRT/ART do componente urbanístico",
+      "attribution": "Consultar certidão/registro individual e escopo do serviço. Lista exemplificativa, não exclusiva.",
+      "sources": [
+        "cau",
+        "crea",
+        "atribuicao"
+      ]
+    },
+    {
+      "object": "Laudo ambiental multidisciplinar de REURB",
+      "professions": "Equipe compatível com todos os componentes efetivamente estudados",
+      "council": "Conselhos dos integrantes",
+      "responsibility": "Registros e responsabilidades por componente",
+      "attribution": "Consultar certidão/registro individual e escopo do serviço. Lista exemplificativa, não exclusiva.",
+      "sources": [
+        "reurb",
+        "bio",
+        "crea",
+        "atribuicao"
+      ]
+    }
+  ],
+  "jurisprudence": {
+    "status": "nao_confirmado",
+    "checked": null,
+    "source": "stf",
+    "note": "Não foi possível confirmar o andamento atual. Nenhuma tese vinculante é presumida."
+  },
+  "pending_documents": [
+    {
+      "title": "Corta-Fogo / CFA — planilha oficial completa",
+      "reason": "Faltam pesos, regras, critérios completos e limites de resultado. Pontuação bloqueada."
+    },
+    {
+      "title": "Modelo institucional de resenha policial",
+      "reason": "Necessário para estruturar a versão institucional final."
+    },
+    {
+      "title": "Atribuições específicas em fauna e técnicos CFT/CFTA",
+      "reason": "Matriz não exaustiva; confirmar norma específica e atribuição individual."
+    },
+    {
+      "title": "ADI 5.771 — decisão, ata e publicação atualizadas",
+      "reason": "Andamento atual não confirmado."
+    },
+    {
+      "title": "GPO - FEV/24 / Guia de Procedimentos Operacional",
+      "reason": "Documento oficial não vinculado ou identificação pendente."
+    },
+    {
+      "title": "GPO - FEV/24",
+      "reason": "Documento oficial não vinculado ou identificação pendente."
+    },
+    {
+      "title": "Manual da Fauna Silvestre Brasileira",
+      "reason": "Documento oficial não vinculado ou identificação pendente."
+    },
+    {
+      "title": "Sol. de Bloqueio de Pátio Madeireiro",
+      "reason": "Documento oficial não vinculado ou identificação pendente."
+    },
+    {
+      "title": "Termo de Dest. de Materiais e Animais",
+      "reason": "Documento oficial não vinculado ou identificação pendente."
+    },
+    {
+      "title": "Relatório de Serviço Operacional",
+      "reason": "Documento oficial não vinculado ou identificação pendente."
+    },
+    {
+      "title": "Termo de Apreensão",
+      "reason": "Documento oficial não vinculado ou identificação pendente."
+    },
+    {
+      "title": "Plan. Fiscalização Madeireira",
+      "reason": "Documento oficial não vinculado ou identificação pendente."
+    },
+    {
+      "title": "Sol. Bloqueio/Desbloqueio de Criador Amador/...",
+      "reason": "Documento oficial não vinculado ou identificação pendente."
+    },
+    {
+      "title": "Tabela 01 - Características da Vegetação - Bio...",
+      "reason": "Documento oficial não vinculado ou identificação pendente."
+    },
+    {
+      "title": "Tabela 02 - Características da Vegetação - Bio...",
+      "reason": "Documento oficial não vinculado ou identificação pendente."
+    },
+    {
+      "title": "Planilha de Nexo Causal - SP SEM FOGO",
+      "reason": "Documento oficial não vinculado ou identificação pendente."
+    },
+    {
+      "title": "Planilha Dinâmica - Nexo Causal",
+      "reason": "Documento oficial não vinculado ou identificação pendente."
+    },
+    {
+      "title": "Modelo de TVA",
+      "reason": "Documento oficial não vinculado ou identificação pendente."
+    },
+    {
+      "title": "Planilha de Nexo Causal - Excel",
+      "reason": "Documento oficial não vinculado ou identificação pendente."
+    },
+    {
+      "title": "Inserção de Resultados - ALGAE - IV",
+      "reason": "Documento oficial não vinculado ou identificação pendente."
+    }
+  ]
 }

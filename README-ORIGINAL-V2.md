@@ -1,4 +1,4 @@
-# Apoio ao Patrulheiro Ambiental — V1
+# Escola Superior de Polícia Ambiental — V1
 
 Aplicação web progressiva (PWA) estática e gratuita.
 
