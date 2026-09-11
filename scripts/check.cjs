@@ -5,12 +5,12 @@ const nodes=new Map(),node=s=>{if(!nodes.has(s))nodes.set(s,{value:'',textConten
 const saved=new Map();
 const context=vm.createContext({URL,document:{querySelector:node},window:{addEventListener(){}},navigator:{},localStorage:{getItem:k=>saved.get(k),setItem:(k,v)=>saved.set(k,v)},console});
 const app=read('app.js');
-for(const file of ['app.js','reader.js','sw.js'])new vm.Script(read(file),{filename:file});
+for(const file of ['app.js','reader.js','sw.js','assistants.js','technical.js','router-patch.js','config.js'])new vm.Script(read(file),{filename:file});
 vm.runInContext(app.replace(/^boot\(\);$/m,''),context);
 vm.runInContext('DATA='+JSON.stringify(data),context);
 const run=s=>vm.runInContext(s,context),set=(id,value)=>node(id).value=String(value);
-assert.equal(data.modules.length,9);
-assert.equal(data.modules.flatMap(m=>m.items).length,45);
+assert.equal(data.modules.length,10);
+assert.equal(data.modules.filter(m=>m.id!=='reurb').flatMap(m=>m.items).length,45);
 assert.equal(data.modules.find(m=>m.id==='referencia').items.length,30);
 assert.equal(data.nexo_causal.criteria.length,8);
 run('renderHome()');assert.match(node('#content').innerHTML,/role="button" tabindex="0"/);
@@ -30,7 +30,7 @@ run('genNexo()');for(const c of data.nexo_causal.criteria)assert.ok(node('#nxout
 vm.runInContext(read('reader.js').split('const reader=')[0],context);
 for(const item of data.modules.flatMap(m=>m.items))for(const d of item.documents||[]){assert.ok(run('safeSource('+JSON.stringify(d.url)+')'),d.url);assert.ok(d.title)}
 for(const url of ['javascript:alert(1)','https://gov.br.attacker.test/x','http://www.planalto.gov.br/','https://a@www.planalto.gov.br/'])assert.equal(run('safeSource('+JSON.stringify(url)+')'),null);
-const handlers={},cacheMock={open:async()=>({match:async()=> 'cached'}),keys:async()=>['pamb-old','pamb-v2.1.0','unrelated'],delete:async k=>{assert.equal(k,'pamb-old')}};
+const handlers={},cacheMock={open:async()=>({match:async()=> 'cached'}),keys:async()=>['pamb-old','espa-v3.0.0','unrelated'],delete:async k=>{assert.equal(k,'pamb-old')}};
 vm.runInNewContext(read('sw.js'),{URL,caches:cacheMock,self:{addEventListener:(event,fn)=>handlers[event]=fn,location:{origin:'https://example.test'},registration:{scope:'https://example.test/app/'},clients:{claim:async()=>{}}}});
 let called=false;handlers.fetch({request:{url:'https://www.planalto.gov.br/',method:'GET'},respondWith(){called=true}});assert.equal(called,false);
 handlers.fetch({request:{url:'https://example.test/other/',method:'GET'},respondWith(){called=true}});assert.equal(called,false);

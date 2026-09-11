@@ -22,3 +22,10 @@ Pesquisa em fontes oficiais realizada em 09/09/2026. “Não localizado” signi
 18. Inserção de Resultados - ALGAE - IV
 
 O GPO aparece duas vezes e as três planilhas de nexo causal podem ser versões do mesmo material. Pode enviar uma cópia de cada arquivo e indicar os títulos correspondentes. O Manual da Fauna tem título genérico; não foi substituído por outro manual. Os modelos encontrados em processos reais não foram tratados como formulários em branco.
+
+## Complementos de 11/09/2026
+
+- Planilha oficial Corta-Fogo/CFA integral: pesos, critérios completos (incluindo XII e XIV), limites e regras para resultado. Não foi localizada nas buscas de arquivos disponíveis.
+- Modelo institucional de resenha policial: não localizado nos arquivos disponíveis. Não usar exemplo de ocorrência real como formulário institucional.
+- ADI 5.771: decisão/ata/publicação e eventual modulação atualizadas. A página oficial não permitiu confirmação de andamento nesta sessão.
+- Normas específicas de fauna e atribuições de técnicos nos sistemas CFT/CFTA. A matriz exemplificativa permanece sujeita à conferência da atribuição individual.

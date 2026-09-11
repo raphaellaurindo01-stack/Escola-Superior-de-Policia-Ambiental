@@ -11,7 +11,7 @@ function status(message){$('#appStatus').textContent=message}
 const esc=s=>(s??'').toString().replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m]));
 async function boot(){
  try{const response=await fetch('data/content.json');if(!response.ok)throw Error();DATA=await response.json();if(!Array.isArray(DATA.modules))throw Error()}catch{content.innerHTML='<p class="warn">Não foi possível carregar o conteúdo. Conecte-se à internet no primeiro acesso e recarregue a página.</p>';status('Conteúdo indisponível.');return}
- status('Conteúdo da V2 fornecida pelo autor. Referências e anexos sem arquivo estão identificados.');
+ status('Biblioteca ESPA. Consulte as fontes e confira os documentos pendentes.');
  renderHome();
  document.querySelectorAll('[data-view]').forEach(b=>b.onclick=()=>navigate(b.dataset.view));
  search.addEventListener('input',()=>renderSearch(search.value));
@@ -26,7 +26,7 @@ $('#installBtn').onclick=async()=>{if(deferredPrompt){deferredPrompt.prompt();de
 function navigate(v){currentView=v;if(v==='home')renderHome();if(v==='favorites')renderFavorites();if(v==='checklists')renderChecklists();if(v==='tools')renderTools();if(v==='bopamb')renderBopamb();if(v==='nexo')renderNexo();if(v==='search'){search.focus();renderSearch(search.value)}}
 function renderHome(){
  currentView='home';
- content.innerHTML=`<h2 class="section-title">Apoio ao Patrulheiro Ambiental</h2><div class="quick reference-nav"><button onclick="renderModule('legislacao')">📚 Legislação Ambiental</button><button onclick="renderModule('fauna')">🐾 Fauna</button><button onclick="renderModule('flora')">🌳 Flora</button><button onclick="renderReference('operacoes')">🚒 Operações</button><button onclick="renderReference('ia')">💡 IA Ambiental</button><button onclick="renderReference('anexos')">📎 Anexos</button></div><h2 class="section-title">Áreas de consulta</h2><div class="grid">${DATA.modules.map(m=>`<article class="card" role="button" tabindex="0" onclick="renderModule('${m.id}')"><div class="icon">${m.icon}</div><h3>${esc(m.title)}</h3><p>${esc(m.description)}</p></article>`).join('')}</div>
+ content.innerHTML=`<h2 class="section-title">Escola Superior de Polícia Ambiental</h2><div class="quick reference-nav"><button onclick="renderModule('legislacao')">📚 Legislação Ambiental</button><button onclick="renderModule('fauna')">🐾 Fauna</button><button onclick="renderModule('flora')">🌳 Flora</button><button onclick="renderReference('operacoes')">🚒 Operações</button><button onclick="renderReference('ia')">💡 IA Ambiental</button><button onclick="renderReference('anexos')">📎 Anexos</button></div><h2 class="section-title">Áreas de consulta</h2><div class="grid">${DATA.modules.map(m=>`<article class="card" role="button" tabindex="0" onclick="renderModule('${m.id}')"><div class="icon">${m.icon}</div><h3>${esc(m.title)}</h3><p>${esc(m.description)}</p></article>`).join('')}</div>
  <h2 class="section-title">Acesso rápido</h2><div class="grid">
  <article class="card" role="button" tabindex="0" onclick="renderChecklists()"><div class="icon">✅</div><h3>Checklists</h3><p>Vistoria geral e conferência de documentos.</p></article>
  <article class="card" role="button" tabindex="0" onclick="renderTools()"><div class="icon">🧮</div><h3>Ferramentas</h3><p>APP, área, coordenadas e cálculos rápidos.</p></article>
@@ -128,7 +128,7 @@ function genNexo(){
 async function copyOutput(id){const text=$('#'+id).textContent;if(!text.trim()){status('Gere o texto antes de copiar.');return}try{await navigator.clipboard.writeText(text);status('Texto copiado.')}catch{const selection=window.getSelection(),range=document.createRange();range.selectNodeContents($('#'+id));selection.removeAllRanges();selection.addRange(range);status('Cópia automática indisponível. O texto foi selecionado para copiar manualmente.')}}
 function renderReference(type){
  currentView='reference:'+type;
- if(type==='ia'){content.innerHTML='<h2 class="section-title">💡 IA Ambiental</h2><section class="tool"><p>O menu consta na referência, mas a V2 não contém integração de inteligência artificial.</p><p>O gerador BOPAmb e o relatório de nexo causal usam os campos preenchidos por você.</p><button onclick="renderBopamb()">Abrir gerador BOPAmb</button><button onclick="renderNexo()">Abrir nexo causal</button></section>';return}
+ if(type==='ia'){return renderEnvironmentalAI();content.innerHTML='<h2 class="section-title">💡 IA Ambiental</h2><section class="tool"><p>O menu consta na referência, mas a V2 não contém integração de inteligência artificial.</p><p>O gerador BOPAmb e o relatório de nexo causal usam os campos preenchidos por você.</p><button onclick="renderBopamb()">Abrir gerador BOPAmb</button><button onclick="renderNexo()">Abrir nexo causal</button></section>';return}
  const items=allItems().filter(i=>(i.tags||[]).includes(type==='operacoes'?'operações':'anexos'));
  content.innerHTML='<h2 class="section-title">'+(type==='operacoes'?'🚒 Operações':'📎 Anexos')+'</h2><p class="small">Relação recuperada da V2. Documentos não anexados estão pendentes de vinculação.</p>'+(type==='operacoes'?'<section class="tool"><h3>SP SEM FOGO 2026</h3><button onclick="renderNexo()">Abrir formulário de nexo causal</button></section>':'')+items.map(i=>resultHtml(i,{title:i.module,icon:i.icon})).join('');
 }

@@ -1,6 +1,6 @@
 'use strict';
 // Official content remains hosted at its source; no third-party proxy is used.
-function safeSource(raw){try{const u=new URL(raw);return u.protocol==='https:'&&!u.username&&!u.password&&(u.hostname.endsWith('.gov.br')||u.hostname==='smastr16.blob.core.windows.net'||u.hostname==='www.imprensaoficial.com.br')?u.href:null}catch{return null}}
+function safeSource(raw){try{const u=new URL(raw);return u.protocol==='https:'&&!u.username&&!u.password&&(u.hostname.endsWith('.gov.br')||u.hostname==='smastr16.blob.core.windows.net'||u.hostname==='www.imprensaoficial.com.br'||u.hostname==='portal.stf.jus.br'||u.hostname==='cfbio.gov.br'||u.hostname==='normativos.confea.org.br')?u.href:null}catch{return null}}
 const reader=document.createElement('dialog');reader.id='documentReader';reader.setAttribute('aria-labelledby','readerTitle');
 reader.innerHTML='<div class="reader-head"><div><span class="meta">LEITURA NA FONTE OFICIAL</span><h2 id="readerTitle"></h2><small id="readerSource"></small></div><button id="readerClose" aria-label="Fechar documento">✕</button></div><p class="reader-help" id="readerHelp">Se o documento não aparecer, o site pode impedir a exibição interna. <a id="readerExternal" target="_blank" rel="noopener noreferrer">Abrir no site oficial ↗</a></p><div id="readerFrame"></div>';
 document.body.appendChild(reader);

@@ -66,3 +66,18 @@ Consulta documental em 09/09/2026. Os links confirmam a identificação da fonte
 - [Resolução SMA 81/2017](https://www.imprensaoficial.com.br/DO/GatewayPDF.aspx?link=%2F2017%2Fexecutivo+secao+i%2Fagosto%2F19%2Fpag_0058_3F86U9IH504PPe489HU1FS74R4S.pdf) — Publicação original. Alterada pela Resolução SEMIL 21/2024, conforme o catálogo SIGAM.
 - [Catálogo oficial SP Sem Fogo — normas e alterações](https://sigam.ambiente.sp.gov.br/sigam3/Default.aspx?idPagina=13232)
 - [Resolução SEMIL 21/2024 — alteração](https://smastr16.blob.core.windows.net/legislacao/sites/5/2024/04/RESOLUCAO-SEMIL-021-2024-PAGINA-60.pdf) — Alterações à SIMA 05/2021 e à SMA 81/2017.
+
+## REURB e responsabilidade técnica — 11/09/2026
+
+Conteúdo baseado no pacote de integração fornecido e conferência em fontes oficiais. Documentos vinculados no catálogo `espa_sources`:
+
+- [Lei 13.465/2017](https://www.planalto.gov.br/ccivil_03/_ato2015-2018/2017/lei/l13465.htm): procedimento e estudos de REURB, com art. 12 e parágrafos conferidos.
+- [Cidade Legal — Decreto SP 52.052/2007](https://www.al.sp.gov.br/repositorio/legislacao/decreto/2007/decreto-52052-13.08.2007.html): apoio estadual à regularização municipal.
+- [CFBio 480/2018](https://cfbio.gov.br/2018/08/30/resolucao-n-480-de-10-de-agosto-de-2018/): atuação do biólogo habilitado em flora, inventário, PTRF e PRAD.
+- [Confea 218/1973](https://normativos.confea.org.br/Ementas/Visualizar?id=266): áreas profissionais, com alterações/revogações indicadas na página. Não extrapolar atribuição individual.
+- [Confea 1.073/2016](https://normativos.confea.org.br/Ementas/Visualizar?id=59111): atribuição profissional.
+- [DN Confea 73/2003](https://normativos.confea.org.br/Ementas/Visualizar?id=627): trata especificamente de silvicultura; não foi usada como habilitação genérica para PRAD.
+- [Lei 12.378/2010](https://www.planalto.gov.br/ccivil_03/_ato2007-2010/2010/lei/l12378.htm): arquitetura e responsabilidade técnica.
+- [ADI 5.771](https://portal.stf.jus.br/processos/detalhe.asp?incidente=5255150): link de acompanhamento; andamento atual não confirmado. Não apresentar julgamento como pendente ou concluído sem verificação.
+
+O Decreto 9.310/2018 foi mantido como referência do pacote, sem marcar nova conferência. Fontes gerais não bastam para resolver atribuição específica de fauna, técnicos ou habilitação individual. Essas lacunas constam da relação de pendências.
