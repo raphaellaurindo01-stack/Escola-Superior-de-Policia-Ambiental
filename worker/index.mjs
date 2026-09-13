@@ -3,7 +3,7 @@ import { runFreeAI } from './providers.mjs';
 import { authenticate, authorize } from './auth.mjs';
 const normalize=s=>String(s||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase();
 const items=corpus.modules.flatMap(m=>m.items);
-const approved=new Set(items.flatMap(i=>(i.documents||[]).map(d=>d.url));
+const approved=new Set(items.flatMap(i=>(i.documents||[]).map(d=>d.url)));
 export function allowedSource(raw){try{const u=new URL(raw);return u.protocol==='https:'&&!u.username&&!u.password&&approved.has(u.href)}catch{return false}}
 export function retrieveLocal(text){const tokens=normalize(text).split(/[^a-z0-9]+/).filter(t=>t.length>2&&!['que','para','como','qual','pode','com','uma'].includes(t));return items.map(i=>({i,n:tokens.reduce((n,t)=>n+Number(normalize([i.title,i.summary,...i.tags||[]].join(' ')).includes(t)),0)})).filter(x=>x.n>0).sort((a,b)=>b.n-a.n).slice(0,6).map(x=>x.i)}
 async function limitedBytes(response,max){if(!response.body)throw Error('empty');const reader=response.body.getReader();const parts=[];let size=0;try{while(true){const {done,value}=await reader.read();if(done)break;size+=value.byteLength;if(size>max)throw Error('size');parts.push(value)}}finally{await reader.cancel().catch(()=>{})}const bytes=new Uint8Array(size);let offset=0;for(const part of parts){bytes.set(part,offset);offset+=part.length}return bytes}
