@@ -1,4 +1,4 @@
-const CACHE='espa-v3.1.0-dev';
+const CACHE='espa-v3.2.0-dev';
 const ASSETS=['./','index.html','styles.css','app.js','reader.js','config.js','assistants.js','technical.js','platform-ui.js','router-patch.js','manifest.webmanifest','data/content.json'];
 self.addEventListener('install',e=>e.waitUntil(caches.open(CACHE).then(c=>c.addAll(ASSETS))));
 self.addEventListener('activate',e=>e.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(k=>(k.startsWith('pamb-')||k.startsWith('espa-'))&&k!==CACHE).map(k=>caches.delete(k)))).then(()=>self.clients.claim())));
