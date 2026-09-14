@@ -1,6 +1,6 @@
 // Ajustes finais do gerador de resenha: renderização robusta, cabeçalho institucional, BOPAmb e geração resiliente.
 const RESENHA_BATTALIONS=['1º Batalhão de Polícia Ambiental','2º Batalhão de Polícia Ambiental','3º Batalhão de Polícia Ambiental','4º Batalhão de Polícia Ambiental','5º Batalhão de Polícia Ambiental'];
-const RESENHA_COMPANIES=['1ª Companhia de Polícia Ambiental','2ª Companhia de Polícia Ambiental','3ª Companhia de Polícia Ambiental','4ª Companhia de Polícia Ambiental'];
+const RESENHA_COMPANIES=['1ª Companhia de Polícia Ambiental','2ª Companhia de Polícia Ambiental','3ª Companhia de Polícia Ambiental','4ª Companhia de Polícia Ambiental','5ª Companhia de Polícia Ambiental'];
 const RESENHA_PLATOONS=['Sede da Companhia','1º Pelotão de Polícia Ambiental','2º Pelotão de Polícia Ambiental','3º Pelotão de Polícia Ambiental','4º Pelotão de Polícia Ambiental'];
 
 function institutionalReportSelect(id,label,options){
