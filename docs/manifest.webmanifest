@@ -1,11 +1,12 @@
 {
   "name": "Escola Superior de Polícia Ambiental",
   "short_name": "Escola Ambiental",
+  "description": "Consulta e apoio operacional da Escola Superior de Polícia Ambiental.",
   "start_url": "./",
   "display": "standalone",
   "background_color": "#f3f6f2",
   "theme_color": "#163d2a",
-  "icons": [],
+  "icons": [{"src":"icons/espa.svg","sizes":"any","type":"image/svg+xml","purpose":"any maskable"}],
   "id": "./",
   "scope": "./"
 }
