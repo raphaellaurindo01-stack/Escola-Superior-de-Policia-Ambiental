@@ -27,6 +27,37 @@ renderResenha=function(){
   content.innerHTML=html;
 };
 
+function whatsappAuthorLabel(author,index){
+  const identification=String(author.name||'').trim().toUpperCase();
+  if(identification.startsWith('AD'))return `Autor Direto ${index+1}`;
+  if(identification.startsWith('AI'))return `Autor Indireto ${index+1}`;
+  return `Autor ${index+1}`;
+}
+function whatsappAiaText(aia){
+  const lines=[`*${aia.label}${aia.number?` nº ${aia.number}`:''}*`];
+  if(aia.adminNorm||aia.adminArticle){
+    lines.push('','*Enquadramento administrativo:*');
+    if(aia.adminNorm)lines.push(`*Norma:* ${aia.adminNorm};`);
+    if(aia.adminArticle)lines.push('',`*Fundamento:* ${aia.adminArticle}.`);
+  }
+  const penalty=[aia.penalties?.length&&aia.penalties.join(', '),aia.value&&`valor ${formatMoney(aia.value)}`].filter(Boolean).join('; ');
+  if(penalty)lines.push('',`*Penalidade:* ${penalty}.`);
+  if(aia.adminAggravant&&aia.adminAggravant!=='Não houve agravante/majoração'){
+    lines.push('',`*Majoração administrativa:* ${aia.adminAggravant}${aia.previousAia?`; AIA anterior: ${aia.previousAia}`:''}.`);
+  }
+  if(aia.penalNorm||aia.penalArticle){
+    lines.push('','*Enquadramento penal:*');
+    if(aia.penalNorm)lines.push(`*Norma:* ${aia.penalNorm};`);
+    if(aia.penalArticle)lines.push('',`*Fundamento:* ${aia.penalArticle}.`);
+  }
+  return lines.join('\n');
+}
+function whatsappAuthorText(author,index){
+  const lines=[`*${whatsappAuthorLabel(author,index)}*`];
+  for(const aia of author.aias||[])lines.push('',whatsappAiaText(aia));
+  return lines.join('\n');
+}
+
 generateResenha=function(){
   const out=document.getElementById('reportOut'),status=document.getElementById('reportStatus');
   try{
@@ -40,22 +71,24 @@ generateResenha=function(){
       return;
     }
     const authors=collectReportAuthors();
-    const parts=[`RESENHA POLICIAL — ${nature.toUpperCase()}`];
-    parts.push('UNIDADE RESPONSÁVEL',`Batalhão: ${rv('repBattalion')}`,`Companhia: ${rv('repCompany')}`,`Pelotão: ${rv('repPlatoon')}`,'');
+    const parts=['*Comando de Policiamento Ambiental*',rv('repBattalion'),rv('repCompany'),rv('repPlatoon'),''];
     const bop=rv('repBOPAmb');
-    if(bop)parts.push(`BOPAmb nº: ${bop}`);
-    parts.push(`Data: ${formatReportDate(rv('repDate'))} | Hora: ${rv('repTime')} h`,`Município: ${rv('repCity')} | Local: ${rv('repPlace')}`,'',rv('repFacts'));
-    if(authors.length)parts.push('','AUTORIA E AUTUAÇÕES',...authors.flatMap(a=>[authorText(a),'']));
-    if(rv('repAdmin'))parts.push('MEDIDAS ADMINISTRATIVAS',rv('repAdmin'),'');
-    const aa=[rv('repAADate')&&`Data: ${formatReportDate(rv('repAADate'))}`,rv('repAATime')&&`Hora: ${rv('repAATime')} h`,rv('repAAForward')&&`Encaminhamento: ${rv('repAAForward')}`].filter(Boolean);
-    if(aa.length)parts.push('ATENDIMENTO AMBIENTAL',aa.join('\n'),'');
-    if(rv('repExtra'))parts.push('OUTRAS INFORMAÇÕES',rv('repExtra'),'');
-    parts.push('Rascunho gerado para revisão. Conferir unidade, números, artigos, valores, identificação dos envolvidos, providências e demais dados antes da utilização institucional.');
+    if(bop)parts.push(`*BOPAmb nº:* ${bop}`,'');
+    parts.push(`*Data:* ${formatReportDate(rv('repDate'))} | Hora: ${rv('repTime')} h`,'',`*Município:* ${rv('repCity')} | Local: ${rv('repPlace')}`,'',rv('repFacts'));
+    if(authors.length)parts.push('','*AUTORIA E AUTUAÇÕES*',...authors.flatMap((author,index)=>['',whatsappAuthorText(author,index)]));
+    if(rv('repAdmin'))parts.push('','*DEMAIS MEDIDAS ADMINISTRATIVAS*','',rv('repAdmin'));
+    const aa=[];
+    if(rv('repAADate'))aa.push(`*Data:* ${formatReportDate(rv('repAADate'))}`);
+    if(rv('repAATime'))aa.push('',`*Hora:* ${rv('repAATime')} h`);
+    if(rv('repAAForward'))aa.push('',`*Encaminhamento:* ${rv('repAAForward')}`);
+    if(aa.length)parts.push('','*ATENDIMENTO AMBIENTAL*','',...aa);
+    if(rv('repExtra'))parts.push('','*OUTRAS INFORMAÇÕES*','',rv('repExtra'));
+    parts.push('','Rascunho gerado para revisão. Conferir unidade, números, artigos, valores, identificação dos envolvidos, providências e demais dados antes da utilização institucional.');
     if(out){out.hidden=false;out.textContent=parts.join('\n').replace(/\n{3,}/g,'\n\n');}
-    if(status)status.textContent=authors.length?'Ocorrência gerada com '+authors.length+' autor(es) individualizado(s). Revise antes de utilizar.':'Ocorrência gerada. Revise antes de utilizar.';
+    if(status)status.textContent=authors.length?'Resenha pronta para copiar no WhatsApp, com '+authors.length+' autor(es) individualizado(s). Revise antes de utilizar.':'Resenha pronta para copiar no WhatsApp. Revise antes de utilizar.';
   }catch(error){
     console.error('Falha ao gerar resenha',error);
-    if(status)status.textContent='Não foi possível gerar a ocorrência. Revise os campos e tente novamente.';
+    if(status)status.textContent='Não foi possível gerar a resenha. Revise os campos e tente novamente.';
     if(out)out.textContent='';
   }
 };
